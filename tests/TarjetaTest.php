@@ -9,6 +9,10 @@ class EstacionTest extends TestCase {
     /**
      * Comprueba que el saldo de una tarjeta nueva sea cero.
      */
+    public function testId(){
+     $tarjeta= new Tarjeta(1234);
+     $this->assertEquals($tarjeta->getId(),1234);
+    }
     public function testSaldoCero() {
         $tarjeta = new Tarjeta;
         $this->assertEquals($tarjeta->saldo(), 0);
