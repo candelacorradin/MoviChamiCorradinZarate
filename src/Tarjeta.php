@@ -13,7 +13,9 @@ protected $id;
     public function getSaldo(){
         return $this->saldo;
     }
-    
+    public function getId(){
+     return $this->id;   
+    }
     public function cargar($monto){
       if($monto==332){
         $this->saldo+=388;
