@@ -2,8 +2,10 @@
 namespace TpFinal;
 class Tarjeta {
 protected $saldo;
-    public function __construct(){
+protected $id;
+    public function __construct($id){
     $this->saldo=0;
+    $this->id=$id;
     }
     public function saldo() {
         return 0;
