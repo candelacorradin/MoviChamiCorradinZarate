@@ -4,6 +4,9 @@ namespace TpFinal;
 
 class Tarjeta {
 protected $saldo;
+    public function __construct(){
+    $this->saldo=0;
+    }
     public function saldo() {
         return 0;
     }
