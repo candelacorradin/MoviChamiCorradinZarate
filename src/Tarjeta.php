@@ -12,8 +12,16 @@ protected $saldo;
         return $this->saldo;
     }
     
-    public function cargarCincuenta($monto){
-    $this->saldo+=$monto; 
+    public function cargar($monto){
+      if($monto==332){
+        $this->saldo+=388;
+      }
+      if($monto==624){
+       $this->saldo+=776;   
+      }
+    else{    
+    $this->saldo+=$monto;
     }
+  }
 }
 ?>
