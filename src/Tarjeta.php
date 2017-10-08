@@ -16,7 +16,7 @@ protected $saldo;
       if($monto==332){
         $this->saldo+=388;
       }
-      if($monto==624){
+      elseif($monto==624){
        $this->saldo+=776;   
       }
     else{    
