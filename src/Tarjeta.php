@@ -1,7 +1,5 @@
 <?php
-
 namespace TpFinal;
-
 class Tarjeta {
 protected $saldo;
     public function __construct(){
@@ -18,3 +16,4 @@ protected $saldo;
     $this->saldo+=$monto; 
     }
 }
+?>
