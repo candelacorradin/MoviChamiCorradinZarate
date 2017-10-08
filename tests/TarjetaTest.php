@@ -14,21 +14,21 @@ class EstacionTest extends TestCase {
      $this->assertEquals($tarjeta->getId(),1234);
     }
     public function testSaldoCero() {
-        $tarjeta = new Tarjeta;
+        $tarjeta = new Tarjeta(1234);
         $this->assertEquals($tarjeta->saldo(), 0);
     }
     public function testSaldoCincuenta(){
-        $tarjeta= new Tarjeta;
+        $tarjeta= new Tarjeta(1234);
         $tarjeta->cargar(50);
         $this->assertEquals($tarjeta->getSaldo(),50);
     }
     public function testSaldoTresTresDos(){
-        $tarjeta= new Tarjeta;
+        $tarjeta= new Tarjeta(1234);
         $tarjeta->cargar(332);
         $this->assertEquals($tarjeta->getSaldo(),388);
     }
     public function testSaldoSeisDosCuatro(){
-        $tarjeta= new Tarjeta;
+        $tarjeta= new Tarjeta(1234);
         $tarjeta->cargar(624);
         $this->assertEquals($tarjeta->getSaldo(),776);
     }
