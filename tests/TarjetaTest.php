@@ -13,4 +13,9 @@ class EstacionTest extends TestCase {
         $tarjeta = new Tarjeta;
         $this->assertEquals($tarjeta->saldo(), 0);
     }
+    public function testSaldoCincuenta(){
+        $tarjeta= new Tarjeta;
+        $tarjeta->cargar(50);
+        $this->assertEquals($tarjeta->getSaldo,50)
+    }
 }
