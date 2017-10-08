@@ -7,7 +7,11 @@ protected $saldo;
     public function saldo() {
         return 0;
     }
-    public function cargar($monto){
-    $this->saldo+=$monto;
+    public function getSaldo(){
+        return $this->saldo;
+    }
+    
+    public function cargarCincuenta($monto){
+    $this->saldo+=$monto; 
     }
 }
