@@ -10,7 +10,7 @@ class Boleto{
 	protected $id_tarj;
 
 
-	public function __construct( int $id_tarjeta, int $saldo, $saldoac=0){
+	public function __construct( int $id_tarjeta, int $saldo, $saldoac = 0 ){
 		$this->fecha = date('d-m-Y');
 		$this->hora = date('H:m:s');
 		$this->saldoAcumulado = $saldoac;
@@ -64,4 +64,17 @@ class Boleto{
 
 
 	}
-	
+
+	public function Medio(){
+		$p  = $this->saldo - $this->saldoAcumulado - 4.35;
+		if($p<0){
+			ViajePlus();
+		}
+		else{
+			$this->saldo = $p;
+			$this->saldoAcumulado = 0;
+		}
+		
+	}
+
+}
