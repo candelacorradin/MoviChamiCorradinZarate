@@ -1,4 +1,5 @@
 <?php
+
 namespace TpFinal;
 class Tarjeta {
 protected $saldo;
@@ -26,6 +27,23 @@ protected $id;
     else{    
     $this->saldo+=$monto;
     }
+  }
+
+  public function Viaje(Tarjeta $tar){
+    $b = new Boleto();
+
+    if($b->tipo == "Normal"){
+      $b->Normal();
+    }
+    if($this->tipo == "MedioBoleto"){
+      $b->Medio();
+    }
+    else{
+      return "Tipo de viaje invalido."
+    }
+    
+
+
   }
 }
 ?>
