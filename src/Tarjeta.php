@@ -30,7 +30,8 @@ protected $id;
     }
   }
 
-  public function Viaje(Colectivo $cole, Boleto $b){  
+  public function Viaje($transporte, Boleto $b){  
+      if( is_a($transporte,'Colectivo') ){
     if( $b->tipoboleto == "Normal" ){
       $b->Normal();
     }
@@ -40,8 +41,12 @@ protected $id;
     else{
       return "Tipo de viaje invalido."
     }
-    
-
+   }
+      
+    if(is_a($transporte,'Bicicleta') )
+    {
+        $b->viajeBici();
+    }
 
   }
 }
