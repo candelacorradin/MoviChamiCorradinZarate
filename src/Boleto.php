@@ -57,22 +57,8 @@ class Boleto{
 			$this->tar->fechaanterior=$this->fecha;
 			$this->tar->horaanterior=$this->hora;
 			}
-		}
 		else {
-			return "Ya han sido utilizados los dos (2) viajes plus. Recargue su tarjeta.";}
-	}
-	
-	public function ViajePlusMedio(){
-		if($this->tar->saldoAcumulado < (4.35*2)){
-			$this->tar->saldoAcumulado= $this->tar->saldoAcumulado + 4.35;
-			$this->tar->fechaanterior=$this->fecha;
-			$this->tar->horaanterior=$this->hora;
-			}
+			return "Ya han sido utilizados los dos (2) viajes plus. Recargue su tarjeta.";
 		}
-		else {
-			return "Ya han sido utilizados los dos (2) viajes plus. Recargue su tarjeta.";}
-
-
 	}
-
 }
