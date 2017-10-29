@@ -12,7 +12,7 @@ class Boleto{
 	public function __construct(Tarjeta $tar, $tipoboleto, $linea, $saldoac = 0){
 		$this->fecha = date('d-m-Y');
 		$this->tar->tipoboleto= $t;
-		$this->hora = date('H:m:s');
+		$this->hora = date('H:i:s');
 		$this->tar->saldoAcumulado = $saldoac;
 		$this->linea = $linea;
 	}
