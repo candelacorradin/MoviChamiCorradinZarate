@@ -71,6 +71,8 @@ class Boleto{
 		}
 		else {
 			return "Ya han sido utilizados los dos (2) viajes plus. Recargue su tarjeta.";}
+
+
 	}
 
 }
