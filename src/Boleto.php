@@ -25,7 +25,7 @@ class Boleto{
 	public function Normal(){
 		$p  = $this->tar->saldo - $this->tar->saldoAcumulado - 9.70;
 		if($p<0){
-			ViajePlusNormal();
+			$this->ViajePlusNormal();
 		}
 		else{
 			$this->tar->saldo = $p;
@@ -36,8 +36,9 @@ class Boleto{
 	}
 	public function Medio(){
 		$p  = $this->tar->saldo - $this->tar->saldoAcumulado - 4.35;
-		if($p<0){
-			ViajePlusMedio();
+		if( $p<0 ){
+			echo "No tiene saldo suficiente para pagar medioboleto. Se realizará un viaje plus";
+			$this->ViajePlusNormal();
 		}
 		else{
 			$this->tar->saldo = $p;
