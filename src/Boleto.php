@@ -51,7 +51,9 @@ class Boleto{
 	public function Transbordo () {
 		
 	}
-
+	public function viajeBici(){
+		
+	}
 	public function ViajePlusNormal(){
 		if($this->tar->saldoAcumulado < (9.70*2)){
 			$this->tar->saldoAcumulado= $this->tar->saldoAcumulado + 9.70;

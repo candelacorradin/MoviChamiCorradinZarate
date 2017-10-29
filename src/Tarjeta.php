@@ -30,20 +30,23 @@ protected $id;
     }
   }
 
-  public function Viaje(){
-    $b = new Boleto();
-
-    if($b->tipo == "Normal"){
+  public function Viaje($transporte, Boleto $b){  
+      if( is_a($transporte,'Colectivo') ){
+    if( $b->tipoboleto == "Normal" ){
       $b->Normal();
     }
-    if($this->tipo == "MedioBoleto"){
+    if( $this->tipoboleto == "MedioBoleto" ){
       $b->Medio();
     }
     else{
       return "Tipo de viaje invalido."
     }
-    
-
+   }
+      
+    if(is_a($transporte,'Bicicleta') )
+    {
+        $b->viajeBici();
+    }
 
   }
 }
