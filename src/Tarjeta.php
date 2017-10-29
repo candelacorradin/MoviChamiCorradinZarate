@@ -1,6 +1,7 @@
 <?php
-
 namespace TpFinal;
+include 'Boleto.php';
+
 class Tarjeta {
 protected $saldo;
 protected $id;
@@ -29,7 +30,7 @@ protected $id;
     }
   }
 
-  public function Viaje(Tarjeta $tar){
+  public function Viaje(){
     $b = new Boleto();
 
     if($b->tipo == "Normal"){
