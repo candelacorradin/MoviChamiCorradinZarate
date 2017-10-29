@@ -1,6 +1,7 @@
 <?php
-
 namespace TpFinal;
+include 'Boleto.php';
+
 class Tarjeta {
 protected $saldo;
 protected $id;
