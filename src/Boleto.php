@@ -4,14 +4,12 @@ namespace TpFinal;
 class Boleto{
 	protected $fecha;
 	protected $hora;
-	protected $fechaant;
-	protected $horaant;
 	protected $tipoboleto;
 	protected $saldo;
 	protected $saldoAcumulado;
 	protected $linea;
 	protected $id_tarj;
-	public function __construct(Tarjeta $tar, $tipoboleto, $linea, $saldoac = 0 ){
+	public function __construct(Tarjeta $tar, $tipoboleto, $linea, $saldoac = 0){
 		$this->fecha = date('d-m-Y');
 		$this->tar->tipoboleto= $t;
 		$this->hora = date('H:m:s');
@@ -27,34 +25,52 @@ class Boleto{
 	public function Normal(){
 		$p  = $this->tar->saldo - $this->tar->saldoAcumulado - 9.70;
 		if($p<0){
-			ViajePlus();
+			ViajePlusNormal();
 		}
 		else{
 			$this->tar->saldo = $p;
 			$this->tar->saldoAcumulado = 0;
 		}
-
-		//AGREGAR CASO DE TRASBORDO y medio boleto
+		$this->tar->fechaanterior=$this->fecha;
+		$this->tar->horaanterior=$this->hora;
+	}
+	public function Medio(){
+		$p  = $this->tar->saldo - $this->tar->saldoAcumulado - 4.35;
+		if($p<0){
+			ViajePlusMedio();
+		}
+		else{
+			$this->tar->saldo = $p;
+			$this->tar->saldoAcumulado = 0;
+			$this->tar->fechaanterior=$this->fecha;
+			$this->tar->horaanterior=$this->hora;
+		}
+	}
+	
+	public function Transbordo () {
 		
 	}
 
-	public function ViajePlus(){
+	public function ViajePlusNormal(){
 		if($this->tar->saldoAcumulado < (9.70*2)){
 			$this->tar->saldoAcumulado= $this->tar->saldoAcumulado + 9.70;
+			$this->tar->fechaanterior=$this->fecha;
+			$this->tar->horaanterior=$this->hora;
+			}
+		}
+		else {
+			return "Ya han sido utilizados los dos (2) viajes plus. Recargue su tarjeta.";}
+	}
+	
+	public function ViajePlusMedio(){
+		if($this->tar->saldoAcumulado < (4.35*2)){
+			$this->tar->saldoAcumulado= $this->tar->saldoAcumulado + 4.35;
+			$this->tar->fechaanterior=$this->fecha;
+			$this->tar->horaanterior=$this->hora;
+			}
 		}
 		else {
 			return "Ya han sido utilizados los dos (2) viajes plus. Recargue su tarjeta.";}
 	}
 
-	public function Medio(){
-		$p  = $this->tar->saldo - $this->tar->saldoAcumulado - 4.35;
-		if($p<0){
-			ViajePlus();
-		}
-		else{
-			$this->tar->saldo = $p;
-			$this->tar->saldoAcumulado = 0;
-		}
-		
-	}
 }
