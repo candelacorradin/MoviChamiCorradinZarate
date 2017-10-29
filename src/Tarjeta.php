@@ -30,13 +30,11 @@ protected $id;
     }
   }
 
-  public function Viaje(){
-    $b = new Boleto();
-
-    if($b->tipo == "Normal"){
+  public function Viaje(Colectivo $cole, Boleto $b){  
+    if( $b->tipoboleto == "Normal" ){
       $b->Normal();
     }
-    if($this->tipo == "MedioBoleto"){
+    if( $this->tipoboleto == "MedioBoleto" ){
       $b->Medio();
     }
     else{
