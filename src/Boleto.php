@@ -1,4 +1,4 @@
-
+<?php
 namespace TpFinal;
 class Boleto{
 	protected $fecha;
