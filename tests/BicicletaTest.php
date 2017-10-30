@@ -11,6 +11,9 @@ class BicicletaTest extends TestCase {
         $bici->Subir();
         $this->assertTrue($bici->EnUso);
     }
-
-
+    public function testBajar(){
+        $bici= new Bicicleta(2);
+        $bici->Subir();
+        $this->assertTrue($bici->EnUso);
+    }
 }
