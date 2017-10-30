@@ -7,7 +7,6 @@ class Bicicleta {
   
   public function __construct ($id) {
     $this->id=$id;
-    $this->HoraDeSubida=;
     $this->EnUso=false;
     $fec=new DateTime('now');
     $this->fechaantbici = $fec->format('Y\-m\-d\'');
