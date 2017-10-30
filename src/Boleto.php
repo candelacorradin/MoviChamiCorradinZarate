@@ -59,7 +59,7 @@ class Boleto{
 			$this->fechaanterior=$this->fecha;
 			$this->horaanterior=$this->hora;
 		}
-		getBoleto();
+		$this->getBoleto();
 	
 		}
 		

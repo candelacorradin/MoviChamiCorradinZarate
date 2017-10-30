@@ -8,4 +8,10 @@ protected $empresa;
     $this->empresa = $empresa;
   }
   
+  public function getLinea(){
+   return $this->linea; 
+  }
+  public function getEmpresa(){
+  return $this->empresa; 
+  }
 }
