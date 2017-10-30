@@ -10,7 +10,7 @@ class Bicicleta {
     $this->HoraDeSubida=;
     $this->EnUso=false;
     $fec=new DateTime('now');
-		$this->fechaantbici = $fec->format('Y\-m\-d\'');
+    $this->fechaantbici = $fec->format('Y\-m\-d\'');
     
   }
     
