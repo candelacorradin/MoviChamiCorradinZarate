@@ -3,9 +3,9 @@ namespace TpFinal;
 include 'Boleto.php';
 
 class Tarjeta {
-protected $saldo;
-protected $id;
-protected $tipo;
+    public $saldo;
+    public $id;
+    public $tipo;
     public function __construct($id,$tipotarjeta){
     $this->saldo=0;
     $this->id=$id;
