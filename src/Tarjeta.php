@@ -5,6 +5,8 @@ include 'Boleto.php';
 class Tarjeta {
 protected $saldo;
 protected $id;
+protected $fechaanterior;
+protected $diaanterior;
     public function __construct($id){
     $this->saldo=0;
     $this->id=$id;
