@@ -117,7 +117,13 @@ public function Trasbordo () {
 	}
 	
 	public function viajeBici(){
-		
+		if($fechaantbici==" "|| ($fecha->diff($fechaantbici))->d != 0){
+			$this->saldo = $this->saldo - 12.45;
+			$this->fechaanterior=$this->fecha;
+			$this->horaanterior=$this->hora;
+		}
+		$this->getBoleto();
+	
 	}
 }
 ?>
