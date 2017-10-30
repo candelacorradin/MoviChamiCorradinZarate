@@ -53,7 +53,7 @@ public function Viaje($transporte){
             		$this->Medio();
         	}
         	else {
-        		return "Tipo de viaje invalido."
+        		return "Tipo de viaje invalido.";
        		}
    	}
  	if(is_a($transporte,'Bicicleta') ) {
