@@ -20,6 +20,9 @@ protected $tipo;
     public function getId(){
      return $this->id;   
     }
+    public function getTipo(){
+     return $this->tipo;   
+    }
     public function cargar($monto){
       if($monto==332){
         $this->saldo+=388;
