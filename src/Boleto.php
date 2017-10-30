@@ -3,16 +3,19 @@
 namespace TpFinal;
 class Boleto{
 	protected $fecha;
+	protected $dia;
+	protected $mes;
 	protected $hora;
 	protected $tipoboleto;
 	protected $saldo;
 	protected $saldoAcumulado;
 	protected $linea;
 	protected $id_tarj;
+	protected $fechaantbici;
 	public function __construct(Tarjeta $tar, $tipoboleto, $linea, $saldoac = 0){
-		$this->fecha = date('d-m-Y');
+		$this->fecha = new DateTime('now');
 		$this->tar->tipoboleto= $t;
-		$this->hora = date('H:i:s');
+		$this->hora = $fecha->format('H:i:s');
 		$this->tar->saldoAcumulado = $saldoac;
 		$this->linea = $linea;
 	}
@@ -52,6 +55,8 @@ class Boleto{
 		
 	}
 	public function viajeBici(){
+		$diferencia=abs(strtotime($fecha) - strtotime($fechaantbici))
+		if(diferencia)
 		
 	}
 	public function ViajePlusNormal(){
