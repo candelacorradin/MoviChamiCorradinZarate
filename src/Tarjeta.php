@@ -5,9 +5,11 @@ include 'Boleto.php';
 class Tarjeta {
 protected $saldo;
 protected $id;
-    public function __construct($id){
+protected $tipo;
+    public function __construct($id,$tipotarjeta){
     $this->saldo=0;
     $this->id=$id;
+    $this->tipo=$tipotarjeta;
     }
     public function saldo() {
         return 0;
