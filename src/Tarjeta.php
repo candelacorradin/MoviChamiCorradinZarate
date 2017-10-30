@@ -11,9 +11,11 @@ protected $diaanterior;
 protected $tipo;
 protected $fechatras;
 protected $diasemana;
-    public function __construct($id){
+protected $tipo;
+    public function __construct($id,$tipotarjeta){
     $this->saldo=0;
     $this->id=$id;
+    $this->tipo=$tipotarjeta;
     }
     public function saldo() {
         return 0;
@@ -23,6 +25,9 @@ protected $diasemana;
     }
     public function getId(){
      return $this->id;   
+    }
+    public function getTipo(){
+     return $this->tipo;   
     }
     public function cargar($monto){
       if($monto==332){
@@ -36,7 +41,7 @@ protected $diasemana;
     }
   }
 
-public function Viaje($transporte, Boleto $b){  
+public function Viaje($transporte){  
 	if( is_a($transporte,'Colectivo') ){
 		$this->fechatras = new DateTime ("now");
 		$this->diasemana = date('w');
