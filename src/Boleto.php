@@ -1,4 +1,5 @@
 <?php
+
 namespace TpFinal;
 class Boleto{
 	protected $fecha;
@@ -24,28 +25,28 @@ class Boleto{
 	}
 	
 	public function Normal(){
-		$p  = $this->tar->saldo - $this->tar->saldoAcumulado - 9.70;
+		$p  = $this->saldo - $this->saldoAcumulado - 9.70;
 		if($p<0){
 			$this->ViajePlusNormal();
 		}
 		else{
-			$this->tar->saldo = $p;
-			$this->tar->saldoAcumulado = 0;
+			$this->saldo = $p;
+			$this->saldoAcumulado = 0;
 		}
-		$this->tar->fechaanterior=$this->fecha;
-		$this->tar->horaanterior=$this->hora;
+		$this->fechaanterior=$this->fecha;
+		$this->horaanterior=$this->hora;
 	}
 	public function Medio(){
-		$p  = $this->tar->saldo - $this->tar->saldoAcumulado - 4.35;
+		$p  = $this->saldo - $this->saldoAcumulado - 4.35;
 		if( $p<0 ){
 			echo "No tiene saldo suficiente para pagar medioboleto. Se realizará un viaje plus";
 			$this->ViajePlusNormal();
 		}
 		else{
-			$this->tar->saldo = $p;
-			$this->tar->saldoAcumulado = 0;
-			$this->tar->fechaanterior=$this->fecha;
-			$this->tar->horaanterior=$this->hora;
+			$this->saldo = $p;
+			$this->saldoAcumulado = 0;
+			$this->fechaanterior=$this->fecha;
+			$this->horaanterior=$this->hora;
 		}
 	}
 	
@@ -55,8 +56,8 @@ class Boleto{
 	public function viajeBici(){
 		if($fechaantbici==" "|| ($fecha->diff($fechaantbici))->d != 0){
 			$this->saldo = $this->saldo - 12.45;
-			$this->tar->fechaanterior=$this->fecha;
-			$this->tar->horaanterior=$this->hora;
+			$this->fechaanterior=$this->fecha;
+			$this->horaanterior=$this->hora;
 		}
 		getBoleto();
 	
@@ -65,10 +66,10 @@ class Boleto{
 		
 	}
 	public function ViajePlusNormal(){
-		if($this->tar->saldoAcumulado < (9.70*2)){
-			$this->tar->saldoAcumulado= $this->tar->saldoAcumulado + 9.70;
-			$this->tar->fechaanterior=$this->fecha;
-			$this->tar->horaanterior=$this->hora;
+		if($this->saldoAcumulado < (9.70*2)){
+			$this->saldoAcumulado= $this->saldoAcumulado + 9.70;
+			$this->fechaanterior=$this->fecha;
+			$this->horaanterior=$this->hora;
 			}
 		else {
 			return "Ya han sido utilizados los dos (2) viajes plus. Recargue su tarjeta.";
