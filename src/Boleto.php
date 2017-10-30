@@ -25,8 +25,8 @@ class Boleto{
 		//$this->tar->saldoAcumulado = $saldoac;
 	}
 
-	public getBoleto(){
-		print "FECHA: ". $this->fecha . "\nTIPO: ". $this->tar->tipo. "\nLINEA DE COLECTIVO: ". $this->cole->linea . "\nSALDO: ". $this->tar->saldo . "\nID: ". $this->tar->id_tarj;
+	public function getBoleto(){
+		return "FECHA: ". $this->fecha . "\nTIPO: ". $this->tar->tipo. "\nLINEA DE COLECTIVO: ". $this->cole->linea . "\nSALDO: ". $this->tar->saldo . "\nID: ". $this->tar->id_tarj;
 
 	}
 
