@@ -11,12 +11,12 @@ protected $diaanterior;
 protected $tipo;
 protected $fechatras;
 protected $diasemana;
-protected $tipo;
     public function __construct($id,$tipotarjeta){
     $this->saldo=0;
     $this->id=$id;
     $this->tipo=$tipotarjeta;
     }
+	
     public function saldo() {
         return 0;
     }
