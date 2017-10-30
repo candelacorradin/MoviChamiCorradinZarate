@@ -12,6 +12,10 @@ class Bicicleta {
     $this->fechaantbici = $fec->format('Y\-m\-d\'');
     
   }
+  
+  public function getId(){
+    return $this->id;
+  }
     
   public function Subir {
     $this->EnUso=true;
