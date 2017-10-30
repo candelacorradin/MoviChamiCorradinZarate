@@ -4,25 +4,32 @@ namespace TpFinal;
 class Boleto{
 	protected $fecha;
 	protected $hora;
-	protected $tipoboleto;
-	protected $saldo;
-	protected $saldoAcumulado;
+	//protected $tipoboleto;
+	//protected $saldo;
+	//protected $saldoAcumulado;
 	protected $linea;
 	protected $id_tarj;
 	protected $fechatras;
 	protected $diasemana;
-	public function __construct(Tarjeta $tar, $tipoboleto, $linea, $saldoac = 0){
+	protected Tarjeta $tar;
+	protected Colectivo $cole;
+	public function __construct(Tarjeta $tar, 
+				    //$tipoboleto, 
+				    Colectivo $cole 
+				    //$saldoac = 0
+				   ){
+		$this->tar=$tar;
+		$this->cole=$cole;
 		$this->fecha = date('d-m-Y');
-		$this->tar->tipoboleto= $t;
+		//$this->tar->tipoboleto= $t;
 		$this->hora = date('H:i:s');
-		$this->tar->saldoAcumulado = $saldoac;
-		$this->linea = $linea;
+		//$this->tar->saldoAcumulado = $saldoac;
 		$this->fechatras = new DateTime ("now");
 		$this->diasemana = date('w');
 	}
 
 	public getBoleto(){
-		print "FECHA: ". $this->fecha . "\nTIPO: ". $this->tar->tipoboleto. "\nLINEA DE COLECTIVO: ". $this->linea . "\nSALDO: ". $this->tar->saldo . "\nID: ". $this->tar->id_tarj;
+		print "FECHA: ". $this->fecha . "\nTIPO: ". $this->tar->tipoboleto. "\nLINEA DE COLECTIVO: ". $this->cole->linea . "\nSALDO: ". $this->tar->saldo . "\nID: ". $this->tar->id_tarj;
 
 	}
 	
@@ -41,7 +48,7 @@ class Boleto{
 	public function Medio(){
 		$p  = $this->tar->saldo - $this->tar->saldoAcumulado - 4.35;
 		if( $p<0 ){
-			echo "No tiene saldo suficiente para pagar medioboleto. Se realizará un viaje plus";
+			echo "No tiene saldo suficiente para pagar medio boleto. Se realizará un viaje plus";
 			$this->ViajePlus();
 		}
 		else{
