@@ -17,11 +17,11 @@ class Bicicleta {
     return $this->id;
   }
     
-  public function Subir {
+  public function Subir(){
     $this->EnUso=true;
   }
   
-  public function Bajar {
+  public function Bajar(){
     $this->EnUso=false;
   }
 }
