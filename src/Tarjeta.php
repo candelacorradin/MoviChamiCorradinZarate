@@ -89,7 +89,7 @@ public function Medio(){
 	}
 	
 public function Trasbordo () {
-	if (this->tipo == "Medio"){
+	if ($this->tipo == "Medio"){
 		$p  = $this->saldo - $this->saldoAcumulado - 1.60;
 	}
 	else {
