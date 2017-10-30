@@ -29,7 +29,7 @@ class Boleto{
 	public function Normal(){
 		$p  = $this->tar->saldo - $this->tar->saldoAcumulado - 9.70;
 		if($p<0){
-			$this->ViajePlusNormal();
+			$this->ViajePlus();
 		}
 		else{
 			$this->tar->saldo = $p;
@@ -42,7 +42,7 @@ class Boleto{
 		$p  = $this->tar->saldo - $this->tar->saldoAcumulado - 4.35;
 		if( $p<0 ){
 			echo "No tiene saldo suficiente para pagar medioboleto. Se realizará un viaje plus";
-			$this->ViajePlusNormal();
+			$this->ViajePlus();
 		}
 		else{
 			$this->tar->saldo = $p;
@@ -52,13 +52,29 @@ class Boleto{
 		}
 	}
 	
-	public function Transbordo () {
-		
+	public function Trasbordo () {
+		if (this->tipoboleto == "Medio"){
+			$p  = $this->tar->saldo - $this->tar->saldoAcumulado - 1.60;
+		}
+		else {
+			$p  = $this->tar->saldo - $this->tar->saldoAcumulado - 3.20;
+		}
+		if( $p<0 ) {
+			echo "No tiene saldo suficiente para pagar trasbordo. Se realizará un viaje plus";
+			$this->ViajePlus();
+		}
+		else{
+			$this->tar->saldo = $p;
+			$this->tar->saldoAcumulado = 0;
+		}
 	}
+	
 	public function viajeBici(){
 		
 	}
-	public function ViajePlusNormal(){
+		
+	}
+	public function ViajePlus(){
 		if($this->tar->saldoAcumulado < (9.70*2)){
 			$this->tar->saldoAcumulado= $this->tar->saldoAcumulado + 9.70;
 			$this->tar->fechaanterior=$this->fechatras;
