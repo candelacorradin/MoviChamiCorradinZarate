@@ -4,26 +4,31 @@ namespace TpFinal;
 class Boleto{
 	protected $fecha;
 	protected $hora;
-	protected $tipoboleto;
-	protected $saldo;
-	protected $saldoAcumulado;
+  protected $fechaantbici = " ";
+	//protected $tipoboleto;
+	//protected $saldo;
+	//protected $saldoAcumulado;
 	protected $linea;
 	protected $id_tarj;
-	protected $fechaantbici = " ";
-	public function __construct(Tarjeta $tar, $tipoboleto, $linea, $saldoac = 0){
-		$fec=new DateTime('now');
-		$this->fecha = $fec->format('Y\-m\-d\'');
-		$this->tar->tipoboleto= $t;
-		$this->hora = $fec->format('H:i:s');
-		$this->tar->saldoAcumulado = $saldoac;
-		$this->linea = $linea;
+	protected Tarjeta $tar;
+	protected Colectivo $cole;
+	public function __construct(Tarjeta $tar, 
+				    //$tipoboleto, 
+				    Colectivo $cole 
+				    //$saldoac = 0
+				   ){
+		$this->tar=$tar;
+		$this->cole=$cole;
+		$this->fecha = date('d-m-Y');
+		//$this->tar->tipoboleto= $t;
+		$this->hora = date('H:i:s');
+		//$this->tar->saldoAcumulado = $saldoac;
 	}
 
 	public getBoleto(){
-		print "FECHA: ". $this->fecha . "\nTIPO: ". $this->tar->tipoboleto. "\nLINEA DE COLECTIVO: ". $this->linea . "\nSALDO: ". $this->tar->saldo . "\nID: ". $this->tar->id_tarj;
+		print "FECHA: ". $this->fecha . "\nTIPO: ". $this->tar->tipo. "\nLINEA DE COLECTIVO: ". $this->cole->linea . "\nSALDO: ". $this->tar->saldo . "\nID: ". $this->tar->id_tarj;
 
 	}
-	
 	public function Normal(){
 		$p  = $this->saldo - $this->saldoAcumulado - 9.70;
 		if($p<0){
@@ -75,4 +80,5 @@ class Boleto{
 			return "Ya han sido utilizados los dos (2) viajes plus. Recargue su tarjeta.";
 		}
 	}
+
 }
