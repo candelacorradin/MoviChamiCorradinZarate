@@ -67,7 +67,7 @@ public function Viaje($transporte){
 			$this->ViajePlus();
 		}
 		else {
-			$this-saldo = $p;
+			$this->saldo = $p;
 			$this->saldoAcumulado = 0;
 		}
 	$this->fechaanterior=$this->fechatras;
