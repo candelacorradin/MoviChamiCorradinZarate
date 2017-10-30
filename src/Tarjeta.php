@@ -8,6 +8,7 @@ class Tarjeta {
     public $tipo;
     public function __construct($id,$tipotarjeta){
     $this->saldo=0;
+        
     $this->id=$id;
     $this->tipo=$tipotarjeta;
     }
