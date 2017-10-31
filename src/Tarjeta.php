@@ -44,18 +44,26 @@ public function Viaje($transporte){
     if( is_a($transporte,'Colectivo') ){
         $this->fechatras = new DateTime ("now");
         $this->diasemana = date('N');
-        
+        $h=date('G');
+        $diff = $fechaanterior->diff($fechatras)
+
     if($this->linea_anterior != $transporte->linea){
-        if($this->diasemana>7)
+        if( ((( ($this->diasemana>6) && ($this->h>=6 && $this->h<=22) ) || ( ($this->diasemana==6) && ($this->h>=6 && $this->h<=14))) && ( ( (($this->diff->h) * 60) + $this->diff->i) >= 60) || ( ( (($this->diff->h) * 60) + $this->diff->i) >= 90) ){
 
-
-
+            $this->Trasbordo();
+        }
+    else{
+        if ($this->tipo == "Medio"){
+            $this->Medio();
+        }
+        $this->Normal();
+    }
 
     }
         if( $this->tipo == "Normal" ){
                 $this->Normal();
             }
-            if( $this->tipo == "MedioBoleto" ){
+            if( $this->tipo == "Medio" ){
                     $this->Medio();
             }
             else {
