@@ -39,13 +39,12 @@ class EstacionTest extends TestCase {
         $tarjeta = new Tarjeta(1234, "Normal");
         $tarjeta->cargar(40);
         $carga = 40;
-        
         $colectivo = new Colectivo ("120", "Semtur");
-  
         $tarjeta->Viaje($colectivo);
         //hizo un viaje normal, ahora el saldo tiene que ser 30.3
         $this->assertEquals($tarjeta->getSaldo(),30.3);
-        $tarjeta->fechaanterior=date("h:i:s",strtotime("-30 minute"));
+        $fecha = new DateTime("now");
+        $tarjeta->fechaanterior=$fecha->sub(new DateInterval('PT0H1800S'));;
         $tarjeta->Viaje($colectivo);
         $this->assertEquals($tarjeta->getSaldo(),27.1);
         //hizo trasbordo
