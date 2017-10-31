@@ -42,20 +42,14 @@ class EstacionTest extends TestCase {
         
         $colectivo = new Colectivo ("120", "Semtur");
   
-        $tarjeta->viaje ($colectivo);
-        //hizo un viaje normal
+        $tarjeta->Viaje($colectivo);
+        //hizo un viaje normal, ahora el saldo tiene que ser 30.3
         $this->assertEquals($tarjeta->getSaldo(),30.3);
         $tarjeta->fechaanterior=date("h:i:s",strtotime("-30 minute"));
         $tarjeta->viaje ($colectivo);
         $this->assertEquals($tarjeta->getSaldo(),27.1);
         //hizo trasbordo
         
-        
-        
-        
-        
-        
-      
     }
     public function testViajeColectivoNormal(){
         $tarjeta = new Tarjeta(1234, "Normal");
