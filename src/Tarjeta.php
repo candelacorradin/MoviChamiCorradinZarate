@@ -12,10 +12,11 @@ protected $fechatras;
 protected $diasemana;
 protected $linea_anterior;
     public function __construct($id,$tipotarjeta){
-    $this->saldo=0;
-    $this->id=$id;
-    $this->tipo=$tipotarjeta;
-    $this->saldoAcumulado=0;
+    	$this->saldo=0;
+    	$this->id=$id;
+    	$this->tipo=$tipotarjeta;
+    	$this->saldoAcumulado=0;
+	$this->fechaanterior=new DateTime("now");
     }
     
     public function saldo() {
@@ -94,6 +95,8 @@ protected $linea_anterior;
 	else{
 		$this->saldo = $p;
 		$this->saldoAcumulado = 0;
+		$this->fechaanterior=$this->fechatras;
+           	$this->diaanterior=$this->diasemana;
 	}
 	}
     public function ViajePlus() {
