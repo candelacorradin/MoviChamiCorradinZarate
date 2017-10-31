@@ -15,7 +15,6 @@ protected $linea_anterior;
     $this->saldo=0;
     $this->id=$id;
     $this->tipo=$tipotarjeta;
-    $this->linea_anterior=" ";
     }
     
     public function saldo() {
@@ -41,7 +40,7 @@ protected $linea_anterior;
     $this->saldo+=$monto;
     }
   }
-public function Viaje($transporte){  
+public function Viaje($transporte){ 
     if( is_a($transporte,'Colectivo') ){
         $this->fechatras = new DateTime ("now");
         $this->diasemana = date('N');
@@ -50,7 +49,7 @@ public function Viaje($transporte){
 
     if($this->linea_anterior != $transporte->linea){
         $this->linea_anterior= $transporte->linea;
-        if( ((( ($this->diasemana>6) && ($this->h>=6 && $this->h<=22) ) || ( ($this->diasemana==6) && ($this->h>=6 && $this->h<=14))) && ( ( (($this->diff->h) * 60) + $this->diff->i) >= 60) || ( ( (($this->diff->h) * 60) + $this->diff->i) >= 90) )){
+        if( ((( ($this->diasemana>6) && ($this->h>=6 && $this->h<=22) ) || ( ($this->diasemana==6) && ($this->h>=6 && $this->h<=14))) && ( ( (($this->diff->h) * 60) + $this->diff->i) >= 60) || ( ( (($this->diff->h) * 60) + $this->diff->i) >= 90) )) {
 
             $this->Trasbordo();
         }
@@ -72,11 +71,10 @@ public function Viaje($transporte){
                 return "Tipo de viaje invalido.";
             }
     }
-    }
     if(is_a($transporte,'Bicicleta') ) {
         $this->viajeBici();
-        }
-  }
+        }}
+  
   public function Normal(){
     $p  = $this->saldo - $this->saldoAcumulado - 9.70;
         if($p<0) {
