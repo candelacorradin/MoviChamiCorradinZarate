@@ -35,6 +35,15 @@ class EstacionTest extends TestCase {
         $tarjeta->cargar(624);
         $this->assertEquals($tarjeta->getSaldo(),776);
     }
+    public function testTrasbordo(){
+        $tarjeta = new Tarjeta(1234, "Medio");
+        $tarjeta->cargar(40);
+        $carga = 40;
+        $colectivo = new Colectivo ("120", "Semtur");
+        $tarjeta->viaje ($colectivo);
+        
+        $this->assertEquals($tarjeta->getSaldo(), $carga-4.35);
+    }
     public function testViajeColectivoNormal(){
         $tarjeta = new Tarjeta(1234, "Normal");
         $tarjeta->cargar(40);
