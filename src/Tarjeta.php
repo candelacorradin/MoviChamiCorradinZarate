@@ -2,12 +2,12 @@
 namespace TpFinal;
 include 'Boleto.php';
 class Tarjeta {
-protected $saldo;
-protected $saldoAcumulado;
-protected $id;
+public $saldo;		//lo pongo pubic nomas porque sino me falla el test
+public $saldoAcumulado; //lo pongo pubic nomas porque sino me falla el test
+public $id;		//lo pongo pubic nomas porque sino me falla el test
 protected $fechaanterior;
 protected $diaanterior;
-protected $tipo;
+public $tipo;		//lo pongo pubic nomas porque sino me falla el test
 protected $fechatras;
 protected $diasemana;
 protected $linea_anterior;
