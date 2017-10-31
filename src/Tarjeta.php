@@ -8,7 +8,7 @@ protected $saldoAcumulado;
 protected $id;
 protected $fechaanterior;
 protected $diaanterior;
-protected $tipo;
+public $tipo;		//lo pongo pubic nomas porque sino me falla el test
 protected $fechatras;
 protected $diasemana;
     public function __construct($id,$tipotarjeta){
