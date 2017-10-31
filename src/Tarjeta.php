@@ -17,7 +17,7 @@ public $fechaantbici;
     	$this->id=$id;
     	$this->tipo=$tipotarjeta;
     	$this->saldoAcumulado=0;
-	$this->fechaanterior= new DateTime("now");
+	$this->fechaanterior= new \DateTime("now");
 	$this->fechaantbici= NULL;
     }
     
