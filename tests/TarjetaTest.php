@@ -49,7 +49,7 @@ class EstacionTest extends TestCase {
         protected $carga = 40;
         $colectivo = new Colectivo ("120", "Semtur");
         $tarjeta->viaje ($colectivo);
-        $this->assertEquals($tarjeta->GetSaldo(), $this->carga-4.35);
+        $this->assertEquals($tarjeta->getSaldo(), $this->carga-4.35);
     }
     public function testViajeColectivoMedioPlus{
         $tarjeta = new Tarjeta(1234, "Medio");
