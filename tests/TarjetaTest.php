@@ -36,7 +36,7 @@ class EstacionTest extends TestCase {
         $this->assertEquals($tarjeta->getSaldo(),776);
     }
     public function testTrasbordo(){
-        $tarjeta = new Tarjeta(1234, "Medio");
+        $tarjeta = new Tarjeta(1234, "Normal");
         $tarjeta->cargar(40);
         $carga = 40;
         
