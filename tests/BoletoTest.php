@@ -16,7 +16,7 @@ class BoletoTest extends TestCase {
       $tarjeta = new Tarjeta(1234,"Normal");
       $cole = new Colectivo("122 verde","Semtur");
       $b = new Boleto($tarjeta,$cole);
-      $this->assertEquals($b->getBoleto(), "FECHA: " . $this->fecha . "\nTIPO: Normal\nLINEA DE COLECTIVO: 122 verde\nSALDO: 0\nID: 1234");
+      $this->assertEquals($b->getBoleto(), "FECHA: " . $b->fecha . "\nTIPO: Normal\nLINEA DE COLECTIVO: 122 verde\nSALDO: 0\nID: 1234");
   }
   
 }
