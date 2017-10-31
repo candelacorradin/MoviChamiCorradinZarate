@@ -44,10 +44,10 @@ class EstacionTest extends TestCase {
   
         $tarjeta->viaje ($colectivo);
         //hizo un viaje normal
-        $this->assertEquals($tarjeta->getSaldo(),40-9.70);
+        $this->assertEquals($tarjeta->getSaldo(),30.3);
         $tarjeta->fechaanterior=date("h:i:s",strtotime("-30 minute"));
         $tarjeta->viaje ($colectivo);
-        $this->assertEquals($tarjeta->getSaldo(),40-9.70-3.20);
+        $this->assertEquals($tarjeta->getSaldo(),27.1);
         //hizo trasbordo
         
         
@@ -63,7 +63,7 @@ class EstacionTest extends TestCase {
         
         $colectivo = new Colectivo ("120", "Semtur");
         $tarjeta->viaje ($colectivo);
-        $this->assertEquals($tarjeta->getSaldo(), 40-9.70);
+        $this->assertEquals($tarjeta->getSaldo(), 30.3);
     }
     public function testViajeColectivoMedio(){
         $tarjeta = new Tarjeta(1234, "Medio");
