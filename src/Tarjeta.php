@@ -49,19 +49,19 @@ public function Viaje($transporte){
 
     if($this->linea_anterior != $transporte->linea){
         $this->linea_anterior= $transporte->linea;
-        if( ((( ($this->diasemana>6) && ($this->h>=6 && $this->h<=22) ) || ( ($this->diasemana==6) && ($this->h>=6 && $this->h<=14))) && ( ( (($this->diff->h) * 60) + $this->diff->i) >= 60) || ( ( (($this->diff->h) * 60) + $this->diff->i) >= 90) )) {
-
+      
+        if( ((( ($this->diasemana>6) && ($this->h>=6 && $this->h<=22) ) || ( ($this->diasemana==6) && ($this->h>=6 && $this->h<=14))) && ( ( (($this->diff->h) * 60) + $this->diff->i) >= 60) || ( ( (($this->diff->h) * 60) + $this->diff->i) >= 90)) ){
             $this->Trasbordo();
         }
     else{
         if ($this->tipo == "Medio"){
             $this->Medio();
         }
+        else{
         $this->Normal();
+        }
     }
-
-    
-    }}
+   }
     if(is_a($transporte,'Bicicleta') ) {
         $this->viajeBici();
         }}
