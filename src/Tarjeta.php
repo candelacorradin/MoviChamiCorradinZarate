@@ -54,6 +54,7 @@ protected $linea_anterior;
                 if( ((( ($this->diasemana>6) && ($this->h>=6 && $this->h<=22) ) || ( ($this->diasemana==6) && ($this->h>=6 && $this->h<=14))) && ( ( (($this->diff->h) * 60) + $this->diff->i) >= 60) || ( ( (($this->diff->h) * 60) + $this->diff->i) >= 90)) ){
                     $this->Trasbordo();
                 }
+			}
             else{
                 if ($this->tipo == "Medio"){
                     $this->Medio();
@@ -62,10 +63,11 @@ protected $linea_anterior;
                 $this->Normal();
                 }
             }
-           }
+		}
         if(is_a($transporte,'Bicicleta') ) {
             $this->viajeBici();
-            }}
+            }
+}
     public function Normal(){
         $p  = $this->saldo - $this->saldoAcumulado - 9.70;
             if($p<0) {
