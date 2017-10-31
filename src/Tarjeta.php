@@ -42,7 +42,7 @@ protected $linea_anterior;
         }
   }
     public function Viaje($transporte){ 
-        if( is_a($transporte,'Colectivo') ){
+        if( (is_a($transporte,'Colectivo')) ){
             $this->fechatras = new DateTime ("now");
             $this->diasemana = date('N');
             $h=date('G');
