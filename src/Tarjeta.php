@@ -3,7 +3,7 @@ namespace TpFinal;
 include 'Boleto.php';
 class Tarjeta {
 public $saldo;		//lo pongo pubic nomas porque sino me falla el test
-protected $saldoAcumulado;
+public $saldoAcumulado; //lo pongo pubic nomas porque sino me falla el test
 public $id;		//lo pongo pubic nomas porque sino me falla el test
 protected $fechaanterior;
 protected $diaanterior;
