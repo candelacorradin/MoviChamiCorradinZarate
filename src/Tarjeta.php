@@ -74,35 +74,28 @@ protected $linea_anterior;
                 $this->ViajePlus();
             }
             else {
-                $this->saldo = $p;
-                $this->saldoAcumulado = 0;
-            }
-        $this->fechaanterior=$this->fechatras;
-        $this->diaanterior=$this->diasemana;
-        }
-
-        }
-        else{
             $this->saldo = $p;
             $this->saldoAcumulado = 0;
             $this->fechaanterior=$this->fechatras;
             $this->diaanterior=$this->diasemana;
         }
-
-        }
-        else {
-            $p  = $this->saldo - $this->saldoAcumulado - 3.20;
-        }
-        if( $p<0 ) {
-            echo "No tiene saldo suficiente para pagar trasbordo. Se realizará un viaje plus";
-            $this->ViajePlus();
-        }
-        else{
-            $this->saldo = $p;
-            $this->saldoAcumulado = 0;
-        }
-        }
-    
+       }
+    public function Trasbordo () {
+	if ($this->tipo == "Medio"){
+		$p  = $this->saldo - $this->saldoAcumulado - 1.60;
+	}
+	else {
+		$p  = $this->saldo - $this->saldoAcumulado - 3.20;
+	}
+	if( $p<0 ) {
+		echo "No tiene saldo suficiente para pagar trasbordo. Se realizará un viaje plus";
+		$this->ViajePlus();
+	}
+	else{
+		$this->saldo = $p;
+		$this->saldoAcumulado = 0;
+	}
+	}
     public function ViajePlus() {
         if($this->saldoAcumulado < (9.70*2)){
             $this->saldoAcumulado= $this->saldoAcumulado + 9.70;
