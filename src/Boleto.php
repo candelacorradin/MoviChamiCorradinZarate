@@ -2,8 +2,8 @@
 
 namespace TpFinal;
 class Boleto{
-	protected $fecha;
-	protected $hora;
+	public $fecha;		//lo pongo pubic nomas porque sino me falla el test
+	public $hora;		//lo pongo pubic nomas porque sino me falla el test
   	protected $fechaantbici = " ";
 	//protected $tipoboleto;
 	//protected $saldo;
