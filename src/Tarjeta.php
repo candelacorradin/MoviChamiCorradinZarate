@@ -3,20 +3,20 @@ namespace TpFinal;
 include 'Boleto.php';
 
 class Tarjeta {
-protected $saldo;
+public $saldo;		//lo pongo pubic nomas porque sino me falla el test
 protected $saldoAcumulado;
-protected $id;
+public $id;		//lo pongo pubic nomas porque sino me falla el test
 protected $fechaanterior;
 protected $diaanterior;
-protected $tipo;
+public $tipo;		//lo pongo pubic nomas porque sino me falla el test
 protected $fechatras;
 protected $diasemana;
-protected $tipo;
     public function __construct($id,$tipotarjeta){
     $this->saldo=0;
     $this->id=$id;
     $this->tipo=$tipotarjeta;
     }
+	
     public function saldo() {
         return 0;
     }
@@ -53,7 +53,7 @@ public function Viaje($transporte){
             		$this->Medio();
         	}
         	else {
-        		return "Tipo de viaje invalido."
+        		return "Tipo de viaje invalido.";
        		}
    	}
  	if(is_a($transporte,'Bicicleta') ) {
@@ -67,7 +67,7 @@ public function Viaje($transporte){
 			$this->ViajePlus();
 		}
 		else {
-			$this-saldo = $p;
+			$this->saldo = $p;
 			$this->saldoAcumulado = 0;
 		}
 	$this->fechaanterior=$this->fechatras;
@@ -89,7 +89,7 @@ public function Medio(){
 	}
 	
 public function Trasbordo () {
-	if (this->tipo == "Medio"){
+	if ($this->tipo == "Medio"){
 		$p  = $this->saldo - $this->saldoAcumulado - 1.60;
 	}
 	else {
@@ -117,7 +117,13 @@ public function Trasbordo () {
 	}
 	
 	public function viajeBici(){
-		
+		if($fechaantbici==" "|| ($fecha->diff($fechaantbici))->d != 0){
+			$this->saldo = $this->saldo - 12.45;
+			$this->fechaanterior=$this->fecha;
+			$this->horaanterior=$this->hora;
+		}
+		$this->getBoleto();
+	
 	}
 }
 ?>

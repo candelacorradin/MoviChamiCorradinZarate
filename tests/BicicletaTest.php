@@ -1,6 +1,5 @@
 <?php
 namespace TpFinal;
-use \Datetime;
 use PHPUnit\Framework\TestCase;
 class BicicletaTest extends TestCase {
     public function testgetId(){
@@ -14,7 +13,7 @@ class BicicletaTest extends TestCase {
     }
     public function testBajar(){
         $bici= new Bicicleta(2);
-        $bici->Subir();
-        $this->assertTrue($bici->EnUso);
+        $bici->Bajar();
+        $this->assertFalse($bici->EnUso);
     }
 }

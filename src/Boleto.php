@@ -2,16 +2,18 @@
 
 namespace TpFinal;
 class Boleto{
-	protected $fecha;
-	protected $hora;
-  protected $fechaantbici = " ";
+	public $fecha;		//lo pongo pubic nomas porque sino me falla el test
+	public $hora;		//lo pongo pubic nomas porque sino me falla el test
+  	protected $fechaantbici = " ";
 	//protected $tipoboleto;
 	//protected $saldo;
 	//protected $saldoAcumulado;
-	protected $linea;
-	protected $id_tarj;
-	protected Tarjeta $tar;
-	protected Colectivo $cole;
+	//protected $linea;
+	//protected $id_tarj;
+	public $tar;		//lo pongo pubic nomas porque sino me falla el test
+	public $cole;	//lo de Tarjeta y Colectivo no va pq lo toma como string no como nombre de clase
+			//lo pongo pubic nomas porque sino me falla el test
+	
 	public function __construct(Tarjeta $tar, 
 				    //$tipoboleto, 
 				    Colectivo $cole 
@@ -24,61 +26,8 @@ class Boleto{
 		$this->hora = date('H:i:s');
 		//$this->tar->saldoAcumulado = $saldoac;
 	}
-
-	public getBoleto(){
-		print "FECHA: ". $this->fecha . "\nTIPO: ". $this->tar->tipo. "\nLINEA DE COLECTIVO: ". $this->cole->linea . "\nSALDO: ". $this->tar->saldo . "\nID: ". $this->tar->id_tarj;
-
-	}
-	public function Normal(){
-		$p  = $this->saldo - $this->saldoAcumulado - 9.70;
-		if($p<0){
-			$this->ViajePlusNormal();
-		}
-		else{
-			$this->saldo = $p;
-			$this->saldoAcumulado = 0;
-		}
-		$this->fechaanterior=$this->fecha;
-		$this->horaanterior=$this->hora;
-	}
-	public function Medio(){
-		$p  = $this->saldo - $this->saldoAcumulado - 4.35;
-		if( $p<0 ){
-			echo "No tiene saldo suficiente para pagar medioboleto. Se realizará un viaje plus";
-			$this->ViajePlusNormal();
-		}
-		else{
-			$this->saldo = $p;
-			$this->saldoAcumulado = 0;
-			$this->fechaanterior=$this->fecha;
-			$this->horaanterior=$this->hora;
-		}
-	}
-	
-	public function Trasbordo () {
-		
-	}
-	public function viajeBici(){
-		if($fechaantbici==" "|| ($fecha->diff($fechaantbici))->d != 0){
-			$this->saldo = $this->saldo - 12.45;
-			$this->fechaanterior=$this->fecha;
-			$this->horaanterior=$this->hora;
-		}
-		$this->getBoleto();
-	
-		}
-		
-		
-	}
-	public function ViajePlusNormal(){
-		if($this->saldoAcumulado < (9.70*2)){
-			$this->saldoAcumulado= $this->saldoAcumulado + 9.70;
-			$this->fechaanterior=$this->fecha;
-			$this->horaanterior=$this->hora;
-			}
-		else {
-			return "Ya han sido utilizados los dos (2) viajes plus. Recargue su tarjeta.";
-		}
+	public function getBoleto(){
+		return "FECHA: ". $this->fecha . "\nTIPO: ". $this->tar->tipo. "\nLINEA DE COLECTIVO: ". $this->cole->linea . "\nSALDO: ". $this->tar->saldo . "\nID: ". $this->tar->id;
 	}
 
 }
