@@ -81,6 +81,18 @@ protected $linea_anterior;
             $this->diaanterior=$this->diasemana;
         }
        }
+	public function Medio(){
+        $p  = $this->saldo - $this->saldoAcumulado - 4.35;
+            if($p<0) {
+                $this->ViajePlus();
+            }
+            else {
+            $this->saldo = $p;
+            $this->saldoAcumulado = 0;
+            $this->fechaanterior=$this->fechatras;
+            $this->diaanterior=$this->diasemana;
+        }
+       }
     public function Trasbordo () {
 	if ($this->tipo == "Medio"){
 		$p  = $this->saldo - $this->saldoAcumulado - 1.60;
@@ -97,6 +109,7 @@ protected $linea_anterior;
 		$this->saldoAcumulado = 0;
 	}
 	}
+	
     public function ViajePlus() {
         if($this->saldoAcumulado < (9.70*2)){
             $this->saldoAcumulado= $this->saldoAcumulado + 9.70;
