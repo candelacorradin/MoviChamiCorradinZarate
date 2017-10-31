@@ -52,11 +52,27 @@ protected $linea_anterior;
             if($this->linea_anterior != $transporte->linea){
                $this->linea_anterior= $transporte->linea;
              
-               if( ((( ($this->diasemana<6) && ($h>=6 && $h<=22) ) || ( ($this->diasemana==6) && ($h>=6 && $h<=14))) && ( ( (($diff->h) * 60) + $diff->i) <= 60) || ( ( (($diff->h) * 60) + $diff->i) >= 90)) ){
-                   $this->Trasbordo();
-                }
-			} 
-       
+               //if( ((
+		    if (($this->diasemana<6) && ($h>=6 && $h<=22) && ((($diff->h) * 60) + $diff->i) <= 60)  {
+		    //|| ( ($this->diasemana==6) && ($h>=6 && $h<=14))) && ( ( (($diff->h) * 60) + $diff->i) <= 60) || ( ( (($diff->h) * 60) + $diff->i) >= 90)) ){
+                  		$this->Trasbordo();
+		    }
+		    elseif (($this->diasemana==6) && ( ( ($h>=6 && $h<=14) && ( ( ($diff->h) * 60) + $diff->i) <= 60) || ( ($h>=14 && $h<22) && ( ( ($diff->h) * 60) + $diff->i) <= 90)  )) )
+			    	$this->Trasbordo();
+			}
+			elseif(($this->diasemana==7) && ($h>=6 && $h<=22) && (((($diff->h) * 60) + $diff->i) <= 90) ){
+				$this->Trasbordo();	
+			}
+				
+		    elseif (($h<=6 && $h>=22) && ((($diff->h) * 60) + $diff->i) <= 90) {
+			   	$this->Trasbordo();
+		    }
+	}
+			    
+			   /* Lunes a viernes de 6 a 22 y sábados de 6 a 14 hs: tiempo máximo 60 minutos.
+•Sábados de las 14 a 22 hs, domingos y feriados de 6 a 22 hs: tiempo máximo 90
+minutos.
+•Noche, comprende franja horaria de 22 a 6 hs: tiempo máximo 90 minutos.  */
                 if ($this->tipo == "Medio"){
 			$this->linea_anterior= $transporte->linea;
                     	$this->Medio();
@@ -76,10 +92,11 @@ protected $linea_anterior;
                 $this->ViajePlus();
             }
             else {
-            $this->saldo = $p;
-            $this->saldoAcumulado = 0;
-            $this->fechaanterior=$this->fechatras;
-            $this->diaanterior=$this->diasemana;
+            	$this->saldo = $p;
+            	$this->saldoAcumulado = 0;
+            	$this->fechaanterior=$this->fechatras;
+            	$this->diaanterior=$this->diasemana;
+		$this->getBoleto();
         }
        }
 	public function Medio(){
@@ -88,10 +105,11 @@ protected $linea_anterior;
                 $this->ViajePlus();
             }
             else {
-            $this->saldo = $p;
-            $this->saldoAcumulado = 0;
-            $this->fechaanterior=$this->fechatras;
-            $this->diaanterior=$this->diasemana;
+            	$this->saldo = $p;
+            	$this->saldoAcumulado = 0;
+            	$this->fechaanterior=$this->fechatras;
+            	$this->diaanterior=$this->diasemana;
+		$this->getBoleto();
         }
        }
     public function Trasbordo () {
@@ -109,13 +127,15 @@ protected $linea_anterior;
 		$this->saldo = $p;
 		$this->saldoAcumulado = 0;
 	}
+	    $this->getBoleto();
 	}
 	
     public function ViajePlus() {
         if($this->saldoAcumulado < (9.70*2)){
-            $this->saldoAcumulado= $this->saldoAcumulado + 9.70;
-            $this->fechaanterior=$this->fechatras;
-            $this->diaanterior=$this->diasemana;
+            	$this->saldoAcumulado= $this->saldoAcumulado + 9.70;
+            	$this->fechaanterior=$this->fechatras;
+            	$this->diaanterior=$this->diasemana;
+		$this->getBoleto();
         }
         else {
             return "Ya han sido utilizados los dos (2) viajes plus. Recargue su tarjeta.";
