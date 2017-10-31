@@ -11,12 +11,14 @@ public $tipo;       //lo pongo public nomas porque sino  falla el test
 public $fechatras;
 protected $diasemana;
 protected $linea_anterior;
+public $fechaantbici;
     public function __construct($id,$tipotarjeta){
     	$this->saldo=0;
     	$this->id=$id;
     	$this->tipo=$tipotarjeta;
     	$this->saldoAcumulado=0;
 	$this->fechaanterior= new DateTime("now");
+	$this->fechaantbici= NULL;
     }
     
     public function saldo() {
@@ -143,12 +145,11 @@ minutos.
     }
     
     public function viajeBici(){
-        if($fechaantbici==" "|| ($fecha->diff($fechaantbici))->d != 0){
-            $this->saldo = $this->saldo - 12.45;
-            $this->fechaanterior=$this->fecha;
-            $this->horaanterior=$this->hora;
+	    	$fecha = new DateTime("now");
+        	if(!is_null($this->fechaantbici) && ($fecha->diff($fechaantbici))->d != 0){
+            	$this->saldo = $this->saldo - 12.45;
+            	$this->fechaantbici= new DateTime('now');
         }
 		$this->getBoleto();
-    
     }
 }
