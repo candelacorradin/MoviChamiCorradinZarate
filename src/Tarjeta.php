@@ -2,12 +2,12 @@
 namespace TpFinal;
 include 'Boleto.php';
 class Tarjeta {
-public $saldo;		//lo pongo pubic nomas porque sino me falla el test
-public $saldoAcumulado; //lo pongo pubic nomas porque sino me falla el test
-public $id;		//lo pongo pubic nomas porque sino me falla el test
+public $saldo;      //lo pongo public nomas porque sino  falla el test
+public $saldoAcumulado; //lo pongo public nomas porque sino  falla el test
+public $id;     //lo pongo public nomas porque sino  falla el test
 protected $fechaanterior;
 protected $diaanterior;
-public $tipo;		//lo pongo pubic nomas porque sino me falla el test
+public $tipo;       //lo pongo public nomas porque sino  falla el test
 protected $fechatras;
 protected $diasemana;
 protected $linea_anterior;
@@ -48,6 +48,7 @@ public function Viaje($transporte){
         $diff = $fechaanterior->diff($fechatras);
 
     if($this->linea_anterior != $transporte->linea){
+        $this->linea_anterior= $transporte->linea;
         if( ((( ($this->diasemana>6) && ($this->h>=6 && $this->h<=22) ) || ( ($this->diasemana==6) && ($this->h>=6 && $this->h<=14))) && ( ( (($this->diff->h) * 60) + $this->diff->i) >= 60) || ( ( (($this->diff->h) * 60) + $this->diff->i) >= 90) ){
 
             $this->Trasbordo();
