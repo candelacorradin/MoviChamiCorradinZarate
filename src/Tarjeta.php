@@ -46,7 +46,7 @@ protected $linea_anterior;
             $this->fechatras = new DateTime ("now");
             $this->diasemana = date('N');
             $h=date('G');
-            $diff = ($this->fechaanterior)->diff($this->fechatras);
+            //$diff = ($this->fechaanterior)->diff($this->fechatras);
             
             //if($this->linea_anterior != $transporte->linea){
                // $this->linea_anterior= $transporte->linea;
