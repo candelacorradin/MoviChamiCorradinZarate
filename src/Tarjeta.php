@@ -43,14 +43,12 @@ protected $linea_anterior;
   }
     public function Viaje($transporte){ 
         if( (is_a($transporte,'Colectivo')) ){
-			print "entra el if is_a\n";
             $this->fechatras = new DateTime ("now");
             $this->diasemana = date('N');
             $h=date('G');
             $diff = ($this->fechaanterior)->diff($this->fechatras);
             
             if($this->linea_anterior != $transporte->linea){
-				print "comillas no es igual que la linea\n";
                 $this->linea_anterior= $transporte->linea;
              
                 if( ((( ($this->diasemana>6) && ($this->h>=6 && $this->h<=22) ) || ( ($this->diasemana==6) && ($this->h>=6 && $this->h<=14))) && ( ( (($diff->h) * 60) + $diff->i) >= 60) || ( ( (($diff->h) * 60) + $diff->i) >= 90)) ){
@@ -59,9 +57,11 @@ protected $linea_anterior;
 			}
        
                 if ($this->tipo == "Medio"){
-                    $this->Medio();
+			$this->linea_anterior= $transporte->linea;
+                    	$this->Medio();
                 }
                 else{
+		$this->linea_anterior= $transporte->linea;
                 $this->Normal();
                 }
 	}
