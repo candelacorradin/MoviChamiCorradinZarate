@@ -15,6 +15,7 @@ protected $linea_anterior;
     $this->saldo=0;
     $this->id=$id;
     $this->tipo=$tipotarjeta;
+    $this->saldoAcumulado=0;
     }
     
     public function saldo() {
