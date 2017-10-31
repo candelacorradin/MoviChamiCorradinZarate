@@ -11,7 +11,8 @@ class Boleto{
 	//protected $linea;
 	//protected $id_tarj;
 	public $tar;		//lo pongo pubic nomas porque sino me falla el test
-	protected $cole;	//lo de Tarjeta y Colectivo no va pq lo toma como string no como nombre de clase
+	public $cole;	//lo de Tarjeta y Colectivo no va pq lo toma como string no como nombre de clase
+			//lo pongo pubic nomas porque sino me falla el test
 	
 	public function __construct(Tarjeta $tar, 
 				    //$tipoboleto, 
