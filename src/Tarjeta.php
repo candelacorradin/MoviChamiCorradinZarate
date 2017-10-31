@@ -65,8 +65,7 @@ public function Viaje($transporte){
     if(is_a($transporte,'Bicicleta') ) {
         $this->viajeBici();
         }}
-  
-  public function Normal(){
+public function Normal(){
     $p  = $this->saldo - $this->saldoAcumulado - 9.70;
         if($p<0) {
             $this->ViajePlus();
