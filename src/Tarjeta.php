@@ -12,10 +12,11 @@ public $fechatras;
 protected $diasemana;
 protected $linea_anterior;
     public function __construct($id,$tipotarjeta){
-    $this->saldo=0;
-    $this->id=$id;
-    $this->tipo=$tipotarjeta;
-    $this->saldoAcumulado=0;
+    	$this->saldo=0;
+    	$this->id=$id;
+    	$this->tipo=$tipotarjeta;
+    	$this->saldoAcumulado=0;
+	$this->fechaanterior= new DateTime("now");
     }
     
     public function saldo() {
@@ -51,7 +52,7 @@ protected $linea_anterior;
             if($this->linea_anterior != $transporte->linea){
                $this->linea_anterior= $transporte->linea;
              
-               if( ((( ($this->diasemana>6) && ($h>=6 && $h<=22) ) || ( ($this->diasemana==6) && ($h>=6 && $h<=14))) && ( ( (($diff->h) * 60) + $diff->i) >= 60) || ( ( (($diff->h) * 60) + $diff->i) >= 90)) ){
+               if( ((( ($this->diasemana<6) && ($h>=6 && $h<=22) ) || ( ($this->diasemana==6) && ($h>=6 && $h<=14))) && ( ( (($diff->h) * 60) + $diff->i) <= 60) || ( ( (($diff->h) * 60) + $diff->i) >= 90)) ){
                    $this->Trasbordo();
                 }
 			} 
