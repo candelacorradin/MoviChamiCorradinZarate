@@ -57,7 +57,7 @@ protected $linea_anterior;
 		    //|| ( ($this->diasemana==6) && ($h>=6 && $h<=14))) && ( ( (($diff->h) * 60) + $diff->i) <= 60) || ( ( (($diff->h) * 60) + $diff->i) >= 90)) ){
                   		$this->Trasbordo();
 		    }
-		    elseif (($this->diasemana==6) && ( ( ($h>=6 && $h<=14) && ( ( ($diff->h) * 60) + $diff->i) <= 60) || ( ($h>=14 && $h<22) && ( ( ($diff->h) * 60) + $diff->i) <= 90)  )) )
+		    elseif (($this->diasemana==6) && ( ( ($h>=6 && $h<=14) && ( ( ($diff->h) * 60) + $diff->i) <= 60) || ( ($h>=14 && $h<22) && ( ( ($diff->h) * 60) + $diff->i) <= 90)  )) ) {
 			    	$this->Trasbordo();
 			}
 			elseif(($this->diasemana==7) && ($h>=6 && $h<=22) && (((($diff->h) * 60) + $diff->i) <= 90) ){
