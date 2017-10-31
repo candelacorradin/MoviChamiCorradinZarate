@@ -45,7 +45,7 @@ public function Viaje($transporte){
         $this->fechatras = new DateTime ("now");
         $this->diasemana = date('N');
         $h=date('G');
-        $diff = $fechaanterior->diff($fechatras)
+        $diff = $fechaanterior->diff($fechatras);
 
     if($this->linea_anterior != $transporte->linea){
         if( ((( ($this->diasemana>6) && ($this->h>=6 && $this->h<=22) ) || ( ($this->diasemana==6) && ($this->h>=6 && $this->h<=14))) && ( ( (($this->diff->h) * 60) + $this->diff->i) >= 60) || ( ( (($this->diff->h) * 60) + $this->diff->i) >= 90) ){
