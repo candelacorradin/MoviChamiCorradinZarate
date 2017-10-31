@@ -2,15 +2,14 @@
 
 namespace TpFinal;
 class Boleto{
-	
 	protected $fecha;
 	protected $hora;
-  protected $fechaantbici = " ";
+  	protected $fechaantbici = " ";
 	//protected $tipoboleto;
 	//protected $saldo;
 	//protected $saldoAcumulado;
-	protected $linea;
-	protected $id_tarj;
+	//protected $linea;
+	//protected $id_tarj;
 	protected $tar;
 	protected $cole;	//lo de Tarjeta y Colectivo no va pq lo toma como string no como nombre de clase
 	
