@@ -57,15 +57,14 @@ protected $linea_anterior;
                     $this->Trasbordo();
                 }
 			}
-            else{
+       
                 if ($this->tipo == "Medio"){
                     $this->Medio();
                 }
                 else{
                 $this->Normal();
                 }
-            }
-		}
+	}
         if(is_a($transporte,'Bicicleta') ) {
             $this->viajeBici();
             }
