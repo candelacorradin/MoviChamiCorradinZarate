@@ -58,21 +58,11 @@ public function Viaje($transporte){
         if ($this->tipo == "Medio"){
             $this->Medio();
         }
+        else{
         $this->Normal();
+        }
     }
-
-    }
-        if( $this->tipo == "Normal" ){
-                $this->Normal();
-            }
-            if( $this->tipo == "Medio" ){
-                    $this->Medio();
-            }
-            else {
-                return "Tipo de viaje invalido.";
-            }
-    }
-    }
+           
     if(is_a($transporte,'Bicicleta') ) {
         $this->viajeBici();
         }
