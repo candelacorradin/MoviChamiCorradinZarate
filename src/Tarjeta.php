@@ -47,6 +47,7 @@ protected $linea_anterior;
             $this->diasemana = date('N');
             $h=date('G');
             $diff = $fechaanterior->diff($fechatras);
+            
             if($this->linea_anterior != $transporte->linea){
                 $this->linea_anterior= $transporte->linea;
               
