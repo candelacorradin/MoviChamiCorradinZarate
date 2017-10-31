@@ -48,13 +48,13 @@ protected $linea_anterior;
             $h=date('G');
             $diff = ($this->fechaanterior)->diff($this->fechatras);
             
-            if($this->linea_anterior != $transporte->linea){
-                $this->linea_anterior= $transporte->linea;
+            //if($this->linea_anterior != $transporte->linea){
+               // $this->linea_anterior= $transporte->linea;
              
-                if( ((( ($this->diasemana>6) && ($this->h>=6 && $this->h<=22) ) || ( ($this->diasemana==6) && ($this->h>=6 && $this->h<=14))) && ( ( (($diff->h) * 60) + $diff->i) >= 60) || ( ( (($diff->h) * 60) + $diff->i) >= 90)) ){
-                    $this->Trasbordo();
-                }
-			}
+               // if( ((( ($this->diasemana>6) && ($this->h>=6 && $this->h<=22) ) || ( ($this->diasemana==6) && ($this->h>=6 && $this->h<=14))) && ( ( (($diff->h) * 60) + $diff->i) >= 60) || ( ( (($diff->h) * 60) + $diff->i) >= 90)) ){
+                   // $this->Trasbordo();
+                //}
+			//} hay que arreglar este if
        
                 if ($this->tipo == "Medio"){
 			$this->linea_anterior= $transporte->linea;
