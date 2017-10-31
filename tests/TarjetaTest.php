@@ -38,18 +38,18 @@ class EstacionTest extends TestCase {
     public function testViajeColectivoNormal(){
         $tarjeta = new Tarjeta(1234, "Normal");
         $tarjeta->cargar(40);
-        protected $carga = 40;
+        $carga = 40;
         $colectivo = new Colectivo ("120", "Semtur");
         $tarjeta->viaje ($colectivo);
-        $this->assertEquals($tarjeta->getSaldo(), $this->carga-9.70);
+        $this->assertEquals($tarjeta->getSaldo(), $carga-9.70);
     }
     public function testViajeColectivoMedio(){
         $tarjeta = new Tarjeta(1234, "Medio");
         $tarjeta->cargar(40);
-        protected $carga = 40;
+        $carga = 40;
         $colectivo = new Colectivo ("120", "Semtur");
         $tarjeta->viaje ($colectivo);
-        $this->assertEquals($tarjeta->getSaldo(), $this->carga-4.35);
+        $this->assertEquals($tarjeta->getSaldo(), $carga-4.35);
     }
     public function testViajeColectivoMedioPlus(){
         $tarjeta = new Tarjeta(1234, "Medio");
