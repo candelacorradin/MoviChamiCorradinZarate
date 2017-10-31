@@ -1,9 +1,10 @@
 <?php
 namespace TpFinal;
+use \Datetime;
 class Bicicleta {
-  protected $EnUso;
-  protected $fechaantbici;
-  protected $id;
+  public $EnUso;
+  public $fechaantbici;
+  public $id;
   
   public function __construct ($id) {
     $this->id=$id;

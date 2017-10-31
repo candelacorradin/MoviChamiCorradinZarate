@@ -2,6 +2,7 @@
 
 namespace TpFinal;
 class Boleto{
+	
 	protected $fecha;
 	protected $hora;
   protected $fechaantbici = " ";
