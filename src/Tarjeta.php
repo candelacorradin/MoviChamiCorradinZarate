@@ -172,7 +172,7 @@ minutos.
 			$this->saldo = $this->saldo - 12.45;
 			$this->fechaantbici= new \DateTime('now');
 		}
-		elseif(($fecha->diff($fechaantbici))->d != 0){
+		elseif(($fecha->diff($this->fechaantbici))->d != 0){
 			$this->saldo = $this->saldo - 12.45;
 			$this->fechaantbici= new \DateTime('now');
 		}
