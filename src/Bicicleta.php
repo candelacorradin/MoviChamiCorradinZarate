@@ -1,6 +1,5 @@
 <?php
 namespace TpFinal;
-use \Datetime;
 class Bicicleta {
   public $EnUso;
   public $id;
