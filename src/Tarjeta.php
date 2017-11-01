@@ -110,6 +110,7 @@ minutos.
 			$this->saldoAcumulado = 0;
 			$this->fechaanterior=$this->fechatras;
 			$this->diaanterior=$this->diasemana;
+			$this->linea_anterior= $transporte->linea;
 			$b=new Boleto($this,$transporte);
 			$b->getBoleto();
 		}
@@ -124,6 +125,7 @@ minutos.
 			$this->saldoAcumulado = 0;
 			$this->fechaanterior=$this->fechatras;
 			$this->diaanterior=$this->diasemana;
+			$this->linea_anterior= $transporte->linea;
 			$b=new Boleto($this,$transporte);
 			$b->getBoleto();
 		}
@@ -142,15 +144,20 @@ minutos.
 		else{
 			$this->saldo = $p;
 			$this->saldoAcumulado = 0;
+			$this->fechaanterior=$this->fechatras;
+			$this->diaanterior=$this->diasemana;
+			$this->linea_anterior= $transporte->linea;
+			$b=new Boleto($this,$transporte);
+			$b->getBoleto();
 		}
-		$b=new Boleto($this,$transporte);
-		$b->getBoleto();
+		
 	}
 	public function ViajePlus($transporte) {
 		if($this->saldoAcumulado < (9.70*2)){
 			$this->saldoAcumulado= $this->saldoAcumulado + 9.70;
 			$this->fechaanterior=$this->fechatras;
 			$this->diaanterior=$this->diasemana;
+			$this->linea_anterior= $transporte->linea;
 			$b=new Boleto($this,$transporte);
 			$b->getBoleto();
 		}
