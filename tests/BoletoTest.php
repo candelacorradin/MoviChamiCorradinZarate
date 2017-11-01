@@ -8,7 +8,7 @@ class BoletoTest extends TestCase {
     $cole = new Colectivo("122 verde","Semtur");
     $b = new Boleto($tarjeta,$cole);
     $this->assertEquals($b->tar,$tarjeta);
-    $this->assertEquals($b->cole,$cole);
+    $this->assertEquals($b->transporte,$cole);
     $this->assertEquals($b->fecha,date('d-m-Y'));
     $this->assertEquals($b->hora,date('H:i:s'));
   }

@@ -35,32 +35,72 @@ class EstacionTest extends TestCase {
         $tarjeta->cargar(624);
         $this->assertEquals($tarjeta->getSaldo(),776);
     }
-    public function testViajeColectivoNormal{
+    public function testDosViajes(){
+            $tarjeta = new Tarjeta(1234,"Normal");
+            $colectivo = new Colectivo ("120", "Semtur");
+            $tarjeta->cargar(50);
+            $tarjeta->Viaje($colectivo);
+            $tarjeta->Viaje($colectivo);
+            $this->assertEquals($tarjeta->getSaldo(),30.6);    
+    }
+    public function testviajeTrasAmigue(){
         $tarjeta = new Tarjeta(1234, "Normal");
         $tarjeta->cargar(40);
-        protected $carga = 40;
         $colectivo = new Colectivo ("120", "Semtur");
-        $tarjeta->viaje ($colectivo);
-        $this->assertEquals($tarjeta->getSaldo(), $this->carga-9.70);
+        $colectivo2 = new Colectivo ("121", "Semtur");
+        $tarjeta->Viaje($colectivo);
+        //hizo un viaje normal, ahora el saldo tiene que ser 30.3
+        $this->assertEquals($tarjeta->getSaldo(),30.3);
+        $fecha = new DateTime("now");
+        $tarjeta->fechaanterior=$fecha->sub(new DateInterval('PT0H1800S'));
+        $tarjeta->Viaje($colectivo2);
+        $this->assertEquals($tarjeta->getSaldo(),27.1);
+        //hizo trasbordo
+        $tarjeta->Viaje($colectivo2); //le paga al otre
+        $this->assertEquals($tarjeta->getSaldo(),17.4);
     }
-    public function testViajeColectivoMedio{
+    
+    public function testTrasbordo(){
+        $tarjeta = new Tarjeta(1234, "Normal");
+        $tarjeta->cargar(40);
+        $colectivo = new Colectivo ("120", "Semtur");
+        $colectivo2 = new Colectivo ("121", "Semtur");
+        $tarjeta->Viaje($colectivo);
+        //hizo un viaje normal, ahora el saldo tiene que ser 30.3
+        $this->assertEquals($tarjeta->getSaldo(),30.3);
+        $fecha = new DateTime("now");
+        $tarjeta->fechaanterior=$fecha->sub(new DateInterval('PT0H1800S'));;
+        $tarjeta->Viaje($colectivo2);
+        $this->assertEquals($tarjeta->getSaldo(),27.1);
+        //hizo trasbordo
+        
+    }
+    public function testViajeColectivoNormal(){
+        $tarjeta = new Tarjeta(1234, "Normal");
+        $tarjeta->cargar(40);
+        
+        $colectivo = new Colectivo ("120", "Semtur");
+        $tarjeta->Viaje($colectivo);
+        $this->assertEquals($tarjeta->getSaldo(), 30.3);
+    }
+    public function testViajeColectivoMedio(){
         $tarjeta = new Tarjeta(1234, "Medio");
         $tarjeta->cargar(40);
-        protected $carga = 40;
+        
         $colectivo = new Colectivo ("120", "Semtur");
-        $tarjeta->viaje ($colectivo);
-        $this->assertEquals($tarjeta->GetSaldo(), $this->carga-4.35);
+        $tarjeta->Viaje($colectivo);
+        $this->assertEquals($tarjeta->getSaldo(), 40-4.35);
     }
-    public function testViajeColectivoMedioPlus{
+    public function testViajeColectivoMedioPlus(){
         $tarjeta = new Tarjeta(1234, "Medio");
         $colectivo = new Colectivo ("120", "Semtur");
-        $tarjeta->viaje ($colectivo);
+        $tarjeta->Viaje($colectivo);
         $this->assertEquals($tarjeta->saldoAcumulado, 9.70);
     }
-    public function testViajeColectivoNormalPlus{
+    public function testViajeColectivoNormalPlus(){
         $tarjeta = new Tarjeta(1234, "Normal");
         $colectivo = new Colectivo ("120", "Semtur");
-        $tarjeta->viaje ($colectivo);
+        $tarjeta->Viaje($colectivo);
         $this->assertEquals($tarjeta->saldoAcumulado, 9.70);
     }
 }
