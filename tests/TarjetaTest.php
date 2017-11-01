@@ -122,6 +122,6 @@ class EstacionTest extends TestCase {
         $tarjeta->fechaanterior=$fecha->sub(new \DateInterval('PT0H1800S'));;
         $tarjeta->Viaje($bici2);
         //el saldo no tiene que cambiar ya que es el mismo dia
-        $this->assertEquals($tarjeta->getSaldo(),27.55;
+        $this->assertEquals($tarjeta->getSaldo(),27.55);
     }
 }
