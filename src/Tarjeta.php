@@ -45,8 +45,8 @@ class Tarjeta {
 		}
 	}
 	public function Viaje($transporte){ 
-		if( (is_a($transporte,'Colectivo')) ){
-			$this->fechatras = new DateTime ("now");
+		if( (is_a($transporte,'TpFinal\Colectivo')) ){
+			$this->fechatras = new \DateTime ("now");
 			$this->diasemana = date('N');
 			$h=date('G');
 			$diff = ($this->fechaanterior)->diff($this->fechatras);
@@ -97,7 +97,7 @@ minutos.
 				}
 			
 		}
-		if( is_a($transporte,'Bicicleta') ) {
+		if( is_a($transporte,'TpFinal\Bicicleta') ) {
 			$this->viajeBici();
 		}
 	}
@@ -160,10 +160,10 @@ minutos.
 		}
 	}
 	public function viajeBici(){
-		$fecha = new DateTime("now");
+		$fecha = new \DateTime("now");
 		if(!is_null($this->fechaantbici) && ($fecha->diff($fechaantbici))->d != 0){
 			$this->saldo = $this->saldo - 12.45;
-			$this->fechaantbici= new DateTime('now');
+			$this->fechaantbici= new \DateTime('now');
 		}
 		$b=new Boleto($this,$transporte);
 		$b->getBoleto();
