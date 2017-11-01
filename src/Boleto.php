@@ -27,10 +27,10 @@ class Boleto{
 		//$this->tar->saldoAcumulado = $saldoac;
 	}
 	public function getBoleto(){
-		if(is_a($this->transporte,'Colectivo')){
+		if( (is_a($this->transporte,'Colectivo')) ){
 		return "FECHA: ". $this->fecha . "\nTIPO: ". $this->tar->tipo. "\nLINEA DE COLECTIVO: ". $this->transporte->linea . "\nSALDO: ". $this->tar->saldo . "\nID: ". $this->tar->id;
 		}
-		   else{
+		else{
 		return "FECHA: ". $this->fecha . "\nTIPO: ". $this->tar->tipo. "\nID BICI: ". $this->transporte->id . "\nSALDO: ". $this->tar->saldo . "\nID TARJETA: ". $this->tar->id;
 		   }
 	}
