@@ -27,8 +27,7 @@ class Boleto{
 		//$this->tar->saldoAcumulado = $saldoac;
 	}
 	public function getBoleto(){
-		if( (is_a($this->transporte,'Colectivo')) ){
-			print "entra en boleto is colectivo\n";
+		if( (is_a($this->transporte,'TpFinal\Colectivo')) ){
 		print "FECHA: ". $this->fecha . "\nTIPO: ". $this->tar->tipo. "\nLINEA DE COLECTIVO: ". $this->transporte->linea . "\nSALDO: ". $this->tar->saldo . "\nID: ". $this->tar->id;
 		}
 		else{
