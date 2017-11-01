@@ -103,4 +103,11 @@ class EstacionTest extends TestCase {
         $tarjeta->Viaje($colectivo);
         $this->assertEquals($tarjeta->saldoAcumulado, 9.70);
     }
+    public function testViajeBici() {
+        $tarjeta = new Tarjeta(1234, "Normal");
+        $tarjeta->cargar(40);
+        $bici = new Bicicleta(456);
+        $tarjeta->Viaje($bici);
+        $this->assertEquals($tarjeta->getSaldo(),27.55);
+    }
 }
