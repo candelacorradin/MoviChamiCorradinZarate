@@ -165,13 +165,18 @@ minutos.
 			return "Ya han sido utilizados los dos (2) viajes plus. Recargue su tarjeta.";
 		}
 	}
-	public function viajeBici(){
+	public function viajeBici($transporte){
 		$fecha = new \DateTime("now");
-		if(!is_null($this->fechaantbici) && ($fecha->diff($fechaantbici))->d != 0){
+		if ( is_null($this->fechaantbici) ) {
+			//esto es cuando viaja por primera vez ever
+			$this->saldo = $this->saldo - 12.45;
+			$this->fechaantbici= new \DateTime('now');
+		}
+		elseif(($fecha->diff($fechaantbici))->d != 0){
 			$this->saldo = $this->saldo - 12.45;
 			$this->fechaantbici= new \DateTime('now');
 		}
 		$b=new Boleto($this,$transporte);
-		$b->getBoleto();
+		$b->getBoleto();   
 	}
 }
