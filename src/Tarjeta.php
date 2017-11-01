@@ -56,7 +56,7 @@ class Tarjeta {
 				$this->linea_anterior= $transporte->linea;
 				if ($this->tipo == "Medio"){
 				$this->linea_anterior= $transporte->linea;
-				$this->Medio();
+				$this->Medio($transporte);
 					return;
 				}
 				else{
@@ -70,16 +70,16 @@ class Tarjeta {
 				if (($this->diasemana < 6) && ($h >=6 && $h <= 22) && ((($diff->h) * 60) + $diff->i) <= 60)  {
 					print "entra if 1";
 					//|| ( ($this->diasemana==6) && ($h>=6 && $h<=14))) && ( ( (($diff->h) * 60) + $diff->i) <= 60) || ( ( (($diff->h) * 60) + $diff->i) >= 90)) ){
-					$this->Trasbordo();
+					$this->Trasbordo($transporte);
 				}
 				elseif (($this->diasemana==6) && ( ( ($h>=6 && $h<=14) && ( ( ($diff->h) * 60) + $diff->i) <= 60) || ( ($h>=14 && $h<22) && ( ( ($diff->h) * 60) + $diff->i) <= 90)  )){
-					$this->Trasbordo();
+					$this->Trasbordo($transporte);
 				}
 				elseif(($this->diasemana==7) && ($h>=6 && $h<=22) && (((($diff->h) * 60) + $diff->i) <= 90) ){
-					$this->Trasbordo();	
+					$this->Trasbordo($transporte);	
 				}
 				elseif (($h<=6 && $h>=22) && ((($diff->h) * 60) + $diff->i) <= 90) {
-					$this->Trasbordo();
+					$this->Trasbordo($transporte);
 				}
 			}
 			/* Lunes a viernes de 6 a 22 y sábados de 6 a 14 hs: tiempo máximo 60 minutos.
@@ -89,7 +89,7 @@ minutos.
 			
 				if ($this->tipo == "Medio"){
 					$this->linea_anterior= $transporte->linea;
-					$this->Medio();
+					$this->Medio($transporte);
 				}
 				else{
 					$this->linea_anterior= $transporte->linea;
@@ -98,13 +98,13 @@ minutos.
 			
 		}
 		if( is_a($transporte,'TpFinal\Bicicleta') ) {
-			$this->viajeBici();
+			$this->viajeBici($transporte);
 		}
 	}
 	public function Normal($transporte){
 		$p  = $this->saldo - $this->saldoAcumulado - 9.70;
 		if($p<0) {
-			$this->ViajePlus();
+			$this->ViajePlus($transporte);
 		}
 		else {
 			$this->saldo = $p;
@@ -115,10 +115,10 @@ minutos.
 			$b->getBoleto();
 		}
 	}
-	public function Medio(){
+	public function Medio($transporte){
 		$p  = $this->saldo - $this->saldoAcumulado - 4.35;
 		if($p<0) {
-			$this->ViajePlus();
+			$this->ViajePlus($transporte);
 		}
 		else {
 			$this->saldo = $p;
@@ -129,7 +129,7 @@ minutos.
 			$b->getBoleto();
 		}
 	}
-	public function Trasbordo () {
+	public function Trasbordo ($transporte) {
 		if ($this->tipo == "Medio"){
 			$p  = $this->saldo - $this->saldoAcumulado - 1.60;
 		}
@@ -138,7 +138,7 @@ minutos.
 		}
 		if( $p<0 ) {
 			echo "No tiene saldo suficiente para pagar trasbordo. Se realizará un viaje plus";
-			$this->ViajePlus();
+			$this->ViajePlus($transporte);
 		}
 		else{
 			$this->saldo = $p;
@@ -147,7 +147,7 @@ minutos.
 		$b=new Boleto($this,$transporte);
 		$b->getBoleto();
 	}
-	public function ViajePlus() {
+	public function ViajePlus($transporte) {
 		if($this->saldoAcumulado < (9.70*2)){
 			$this->saldoAcumulado= $this->saldoAcumulado + 9.70;
 			$this->fechaanterior=$this->fechatras;
