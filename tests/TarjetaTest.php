@@ -110,4 +110,18 @@ class EstacionTest extends TestCase {
         $tarjeta->Viaje($bici);
         $this->assertEquals($tarjeta->getSaldo(),27.55);
     }
+    public function testAlquilarVariasVeces(){
+        $tarjeta = new Tarjeta(1234, "Normal");
+        $tarjeta->cargar(40);
+        $bici = new Bicicleta (120);
+        $bici2 = new Bicicleta (121);
+        $tarjeta->Viaje($bici);
+        //hizo un viaje normal, ahora el saldo tiene que ser 27.55
+        $this->assertEquals($tarjeta->getSaldo(),27.55);
+        $fecha = new \DateTime("now");
+        $tarjeta->fechaanterior=$fecha->sub(new \DateInterval('PT0H1800S'));;
+        $tarjeta->Viaje($bici2);
+        //el saldo no tiene que cambiar ya que es el mismo dia
+        $this->assertEquals($tarjeta->getSaldo(),27.55;
+    }
 }
