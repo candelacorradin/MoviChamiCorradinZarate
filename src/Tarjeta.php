@@ -63,10 +63,8 @@ class Tarjeta {
 					$this->linea_anterior= $transporte->linea;
 					$this->Normal($transporte);
 					return;
+				}		
 				}
-					
-				}
-				//if( ((
 				if (($this->diasemana < 6) && ($h >=6 && $h <= 22) && ((($diff->h) * 60) + $diff->i) <= 60)  {
 					print "entra if 1";
 					//|| ( ($this->diasemana==6) && ($h>=6 && $h<=14))) && ( ( (($diff->h) * 60) + $diff->i) <= 60) || ( ( (($diff->h) * 60) + $diff->i) >= 90)) ){
@@ -87,6 +85,7 @@ class Tarjeta {
 minutos.
 •Noche, comprende franja horaria de 22 a 6 hs: tiempo máximo 90 minutos.  */
 			
+			else {
 				if ($this->tipo == "Medio"){
 					$this->linea_anterior= $transporte->linea;
 					$this->Medio($transporte);
@@ -95,7 +94,7 @@ minutos.
 					$this->linea_anterior= $transporte->linea;
 					$this->Normal($transporte);
 				}
-			
+			}
 		}
 		if( is_a($transporte,'TpFinal\Bicicleta') ) {
 			$this->viajeBici($transporte);
