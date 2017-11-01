@@ -41,7 +41,7 @@ class EstacionTest extends TestCase {
             $tarjeta->cargar(50);
             $tarjeta->Viaje($colectivo);
             $tarjeta->Viaje($colectivo);
-            $this->assertEquals($tarjeta->getSaldo(),30.5);    
+            $this->assertEquals($tarjeta->getSaldo(),30.6);    
     }
     public function testviajeTrasAmigue(){
         $tarjeta = new Tarjeta(1234, "Normal");
@@ -59,7 +59,7 @@ class EstacionTest extends TestCase {
         $tarjeta->Viaje($colectivo2); //le paga al otre
         $this->assertEquals($tarjeta->getSaldo(),17.4);
     }
-    //actualizate carajo
+    
     public function testTrasbordo(){
         $tarjeta = new Tarjeta(1234, "Normal");
         $tarjeta->cargar(40);
