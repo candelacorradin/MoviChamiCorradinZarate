@@ -21,7 +21,6 @@ class Tarjeta {
 		$this->fechaantbici= NULL;
 		$this->linea_anterior= NULL;
 	}
-
 	public function saldo() {
 		return 0;
 	}
@@ -51,7 +50,6 @@ class Tarjeta {
 			$this->diasemana = date('N');
 			$h=date('G');
 			$diff = ($this->fechaanterior)->diff($this->fechatras);
-
 			if($this->linea_anterior != $transporte->linea){
 				if(is_null($this->linea_anterior)){
 				//es el primer viaje que hace
@@ -59,14 +57,15 @@ class Tarjeta {
 				if ($this->tipo == "Medio"){
 				$this->linea_anterior= $transporte->linea;
 				$this->Medio();
+					return;
 				}
 				else{
 					$this->linea_anterior= $transporte->linea;
-					$this->Normal();
+					$this->Normal($transporte);
+					return;
 				}
 					
 				}
-
 				//if( ((
 				if (($this->diasemana < 6) && ($h >=6 && $h <= 22) && ((($diff->h) * 60) + $diff->i) <= 60)  {
 					print "entra if 1";
@@ -79,12 +78,10 @@ class Tarjeta {
 				elseif(($this->diasemana==7) && ($h>=6 && $h<=22) && (((($diff->h) * 60) + $diff->i) <= 90) ){
 					$this->Trasbordo();	
 				}
-
 				elseif (($h<=6 && $h>=22) && ((($diff->h) * 60) + $diff->i) <= 90) {
 					$this->Trasbordo();
 				}
 			}
-
 			/* Lunes a viernes de 6 a 22 y sábados de 6 a 14 hs: tiempo máximo 60 minutos.
 •Sábados de las 14 a 22 hs, domingos y feriados de 6 a 22 hs: tiempo máximo 90
 minutos.
@@ -96,7 +93,7 @@ minutos.
 				}
 				else{
 					$this->linea_anterior= $transporte->linea;
-					$this->Normal();
+					$this->Normal($transporte);
 				}
 			
 		}
@@ -104,7 +101,7 @@ minutos.
 			$this->viajeBici();
 		}
 	}
-	public function Normal(){
+	public function Normal($transporte){
 		$p  = $this->saldo - $this->saldoAcumulado - 9.70;
 		if($p<0) {
 			$this->ViajePlus();
@@ -150,7 +147,6 @@ minutos.
 		$b=new Boleto($this,$transporte);
 		$b->getBoleto();
 	}
-
 	public function ViajePlus() {
 		if($this->saldoAcumulado < (9.70*2)){
 			$this->saldoAcumulado= $this->saldoAcumulado + 9.70;
@@ -163,7 +159,6 @@ minutos.
 			return "Ya han sido utilizados los dos (2) viajes plus. Recargue su tarjeta.";
 		}
 	}
-
 	public function viajeBici(){
 		$fecha = new DateTime("now");
 		if(!is_null($this->fechaantbici) && ($fecha->diff($fechaantbici))->d != 0){
