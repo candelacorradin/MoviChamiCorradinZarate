@@ -52,7 +52,7 @@ class EstacionTest extends TestCase {
         //hizo un viaje normal, ahora el saldo tiene que ser 30.3
         $this->assertEquals($tarjeta->getSaldo(),30.3);
         $fecha = new \DateTime("now");
-        $tarjeta->fechaanterior=$fecha->sub(new DateInterval('PT0H1800S'));
+        $tarjeta->fechaanterior=$fecha->sub(new \DateInterval('PT0H1800S'));
         $tarjeta->Viaje($colectivo2);
         $this->assertEquals($tarjeta->getSaldo(),27.1);
         //hizo trasbordo
@@ -69,7 +69,7 @@ class EstacionTest extends TestCase {
         //hizo un viaje normal, ahora el saldo tiene que ser 30.3
         $this->assertEquals($tarjeta->getSaldo(),30.3);
         $fecha = new \DateTime("now");
-        $tarjeta->fechaanterior=$fecha->sub(new DateInterval('PT0H1800S'));;
+        $tarjeta->fechaanterior=$fecha->sub(new \DateInterval('PT0H1800S'));;
         $tarjeta->Viaje($colectivo2);
         $this->assertEquals($tarjeta->getSaldo(),27.1);
         //hizo trasbordo
