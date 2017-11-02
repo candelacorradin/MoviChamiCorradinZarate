@@ -14,23 +14,16 @@ class Boleto{
 	public $transporte;	//lo de Tarjeta y Colectivo no va pq lo toma como string no como nombre de clase
 			//lo pongo pubic nomas porque sino me falla el test
 	
-	public function __construct(Tarjeta $tar, 
-				    //$tipoboleto, 
-				    $transporte
-				    //$saldoac = 0
-				   ){
-		$this->tar=$tar;
-		$this->transporte=$transporte;
-		$this->fecha = date('d-m-Y');
-		//$this->tar->tipoboleto= $t;
-		$this->hora = date('H:i:s');
-		//$this->tar->saldoAcumulado = $saldoac;
+	public function __construct(Tarjeta $tar, $transporte){
+		$this->tar = $tar;
+		$this->transporte = $transporte;
+		$this->fecha = date( 'd-m-Y' );
+		$this->hora = date( 'H:i:s' );
 	}
-	public function getBoleto(){
-		if( (is_a($this->transporte,'TpFinal\Colectivo')) ){
+	public function get_boleto(){
+		if( ( is_a( $this->transporte, 'TpFinal\Colectivo' ) ) ){
 		return "FECHA: ". $this->fecha . "\nTIPO: ". $this->tar->tipo. "\nLINEA DE COLECTIVO: ". $this->transporte->linea . "\nSALDO: ". $this->tar->saldo . "\nID: ". $this->tar->id;
-		}
-		else{
+		} else{
 		return "FECHA: ". $this->fecha . "\nTIPO: ". $this->tar->tipo. "\nID BICI: ". $this->transporte->id . "\nSALDO: ". $this->tar->saldo . "\nID TARJETA: ". $this->tar->id;
 		   }
 	}
