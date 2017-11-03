@@ -5,11 +5,6 @@ class Boleto{
 	public $fecha;		//lo pongo pubic nomas porque sino me falla el test
 	public $hora;		//lo pongo pubic nomas porque sino me falla el test
   	protected $fechaantbici = " ";
-	//protected $tipoboleto;
-	//protected $saldo;
-	//protected $saldoAcumulado;
-	//protected $linea;
-	//protected $id_tarj;
 	public $tar;		//lo pongo pubic nomas porque sino me falla el test
 	public $transporte;	//lo de Tarjeta y Colectivo no va pq lo toma como string no como nombre de clase
 			//lo pongo pubic nomas porque sino me falla el test
