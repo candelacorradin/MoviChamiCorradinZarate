@@ -1,24 +1,24 @@
 <?php
 namespace TpFinal;
 class Bicicleta {
-  public $EnUso;
+  public $en_uso;
   public $id;
   
-  public function __construct ($id) {
-    $this->id=$id;
-    $this->EnUso=false;
+  public function __construct ( $id ) {
+    $this->id = $id;
+    $this->EnUso = false;
       
   }
   
-  public function getId(){
-    return $this->id;
+  public function get_id(){
+      return $this->id;
   }
     
-  public function Subir(){
-    $this->EnUso=true;
+  public function subir(){
+      $this->en_uso = true;
   }
   
-  public function Bajar(){
-    $this->EnUso=false;
+  public function bajar(){
+      $this->en_uso = false;
   }
 }
