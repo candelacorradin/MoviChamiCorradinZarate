@@ -160,7 +160,7 @@ class EstacionTest extends TestCase {
      $tarjeta = new Tarjeta( 123, "Normal" );
      $cole = new Colectivo( "122", "semtur" );
      $tarjeta->saldo_acumulado = 9.70*2;
-     $this->assertEquals( $tarjeta->normal($cole), "Ya han sido utilizados los dos (2) viajes plus. Recargue su tarjeta." );
+     $this->assertEquals( $tarjeta->viaje_plus($cole), "Ya han sido utilizados los dos (2) viajes plus. Recargue su tarjeta." );
     }
     
 }
