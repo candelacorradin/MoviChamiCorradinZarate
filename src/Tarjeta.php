@@ -120,7 +120,7 @@ class Tarjeta {
 		}
 		if( $p<0 ) {
 			echo "No tiene saldo suficiente para pagar trasbordo. Se realizará un viaje plus";
-			$this->viajeplus( $transporte );
+			$this->viaje_plus( $transporte );
 		} else{
 			$this->saldo = $p;
 			$this->saldo_acumulado = 0;
