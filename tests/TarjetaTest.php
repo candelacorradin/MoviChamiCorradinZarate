@@ -121,4 +121,46 @@ class EstacionTest extends TestCase {
         //el saldo no tiene que cambiar ya que es el mismo dia
         $this->assertEquals( $tarjeta->get_saldo(), 27.55 );
     }
+    public function test_tras_medio(){
+        $tarjeta = new Tarjeta( 1234, "Medio" );
+        $tarjeta->cargar( 40 );
+        $colectivo = new Colectivo ( "120", "Semtur" );
+        $colectivo2 = new Colectivo ( "121", "Semtur" );
+        $tarjeta->viaje( $colectivo );
+        //hizo un viaje normal, ahora el saldo tiene que ser 40-4.35
+        $this->assertEquals( $tarjeta->get_saldo(), 40-4.35 );
+        $fecha = new \DateTime( "now" );
+        $tarjeta->fechaanterior = $fecha->sub( new \DateInterval( 'PT0H1800S' ) );
+        $tarjeta->viaje( $colectivo2 );
+        $this->assertEquals( $tarjeta->get_saldo(), (40-4.35)-1.6 );
+        //hizo trasbordo
+    }
+    public function test_dos_viajes_medio(){
+            $tarjeta = new Tarjeta( 1234, "Medio" );
+            $colectivo = new Colectivo ( "120", "Semtur" );
+            $tarjeta->cargar( 50 );
+            $tarjeta->viaje( $colectivo );
+            $tarjeta->viaje( $colectivo );
+            $this->assertEquals( $tarjeta->get_saldo(), 50-( 4.35*2 ) );
+    }
+    public function test_tras_a_plus(){
+        $tarjeta = new Tarjeta( 1234, "Normal" );
+        $tarjeta->cargar(10);
+        $colectivo = new Colectivo ( "120", "Semtur" );
+        $colectivo2 = new Colectivo ( "121", "Semtur" );
+        $tarjeta->viaje( $colectivo );
+        //hizo un viaje normal
+        $this->assertEquals( $tarjeta->get_saldo(), 0.3 );
+        $fecha = new \DateTime( "now" );
+        $tarjeta->fechaanterior = $fecha->sub( new \DateInterval( 'PT0H1800S' ) );
+        $tarjeta->viaje( $colectivo2 );
+        $this->assertEquals( $tarjeta->saldo_acumulado(), 9.7 );
+    }
+    public function test_plus_gastados(){
+     $tarjeta = new Tarjeta( 123, "Normal" );
+     $cole = new Colectivo( "122", "semtur" );
+     $tarjeta->saldo_acumulado = 9.70*2;
+     $this->assertEquals( $tarjeta->normal($cole), "Ya han sido utilizados los dos (2) viajes plus. Recargue su tarjeta." );
+    }
+    
 }
