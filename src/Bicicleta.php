@@ -6,7 +6,7 @@ class Bicicleta {
   
   public function __construct ( $id ) {
     $this->id = $id;
-    $this->EnUso = false;
+    $this->en_uso = false;
       
   }
   
