@@ -67,7 +67,7 @@ class Tarjeta {
 					$this->trasbordo( $transporte );
 				} elseif( ( 7 == $this->diasemana ) && ( $h >= 6 && $h <= 22 ) && ( ( ( ( $diff->h ) * 60 ) + $diff->i ) <= 90 ) ) {
 					$this->trasbordo( $transporte );	
-				} elseif ( ( $h <= 6 && $h >= 22 ) && ((( $diff->h ) * 60 ) + $diff->i ) <= 90 ) {
+				} elseif ( ( $h <= 6 || $h >= 22 ) && ((( $diff->h ) * 60 ) + $diff->i ) <= 90 ) {
 					$this->trasbordo( $transporte );
 				}
 			} else {
