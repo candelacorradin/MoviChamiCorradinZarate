@@ -133,7 +133,7 @@ class Tarjeta {
 		
 	}
 	public function viaje_plus( $transporte ) {
-		if( $this->saldo_acumulado < ( 9.70*2 ) ){
+		if( $this->saldo_acumulado <= ( 9.70*2 ) ){
 			$this->saldo_acumulado = $this->saldo_acumulado + 9.70;
 			$this->fechaanterior = $this->fechatras;
 			$this->diaanterior = $this->diasemana;
