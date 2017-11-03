@@ -154,7 +154,7 @@ class EstacionTest extends TestCase {
         $fecha = new \DateTime( "now" );
         $tarjeta->fechaanterior = $fecha->sub( new \DateInterval( 'PT0H1800S' ) );
         $tarjeta->viaje( $colectivo2 );
-        $this->assertEquals( $tarjeta->saldo_acumulado(), 9.7 );
+        $this->assertEquals( $tarjeta->saldo_acumulado, 9.7 );
     }
     public function test_plus_gastados(){
      $tarjeta = new Tarjeta( 123, "Normal" );
