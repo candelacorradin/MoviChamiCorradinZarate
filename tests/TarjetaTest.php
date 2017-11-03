@@ -203,7 +203,10 @@ class EstacionTest extends TestCase {
         $tarjeta->viaje( $colectivo2 );
         $this->assertEquals( $tarjeta->get_saldo(), 27.1 );
         //hizo trasbordo   
-    } estos tests no se pueden ejecutar dado que en nuestro algoritmo, al viajar, la fecha se asigna en el metodo viaje y se le
-    asigna la fecha actual, por lo que prefiero dejarlo así al estar segura de que anda en el primer y ultimo caso. Es decir,
-    no se probó para día sabado o domingo, pero tranquilamente se puede hacer) */
+    } Estos tests (más el de viajeBici cuando no es el primer viaje y este 2do viaje es otro día diferente al anterior) no se pueden 
+    ejecutar dado que en nuestro algoritmo, al viajar, la fecha se asigna en el metodo viaje y se le asigna la fecha actual. 
+    Prefiero dejarlo así porque esto implicaría un cambio importante en nuestro algoritmo si se le ingresara la fecha manualmente 
+    (que no nos gustó mucho la idea originalmente y bueno, debido a eso surgió este inconveniente).
+    He verificado compilando con cada escenario restante (día sabado, domingo y dia de semana en todos los horarios en wamp, 
+    y todos los casos andan perfectamente. */
 }
