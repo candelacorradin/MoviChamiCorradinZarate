@@ -162,5 +162,46 @@ class EstacionTest extends TestCase {
      $tarjeta->saldo_acumulado = 9.70*2;
      $this->assertEquals( $tarjeta->viaje_plus($cole), "Ya han sido utilizados los dos (2) viajes plus. Recargue su tarjeta." );
     }
-    
+    public function test_tras_sabado(){
+        $tarjeta = new Tarjeta( 1234, "Normal" );
+        $tarjeta->cargar( 40 );
+        $colectivo = new Colectivo ( "120", "Semtur" );
+        $colectivo2 = new Colectivo ( "121", "Semtur" );
+        $tarjeta->viaje( $colectivo );
+        //hizo un viaje normal, ahora el saldo tiene que ser 30.3
+        $this->assertEquals( $tarjeta->get_saldo(), 30.3 );
+        $fecha = new DateTime('2017-11-04 10:00:00');
+        $tarjeta->fechaanterior = $fecha->sub( new \DateInterval( 'PT0H1800S' ) );
+        $tarjeta->viaje( $colectivo2 );
+        $this->assertEquals( $tarjeta->get_saldo(), 27.1 );
+        //hizo trasbordo
+    }
+    public function test_tras_domingo(){
+        $tarjeta = new Tarjeta( 1234, "Normal" );
+        $tarjeta->cargar( 40 );
+        $colectivo = new Colectivo ( "120", "Semtur" );
+        $colectivo2 = new Colectivo ( "121", "Semtur" );
+        $tarjeta->viaje( $colectivo );
+        //hizo un viaje normal, ahora el saldo tiene que ser 30.3
+        $this->assertEquals( $tarjeta->get_saldo(), 30.3 );
+        $fecha = new DateTime('2017-11-05 10:00:00');
+        $tarjeta->fechaanterior = $fecha->sub( new \DateInterval( 'PT0H1800S' ) );
+        $tarjeta->viaje( $colectivo2 );
+        $this->assertEquals( $tarjeta->get_saldo(), 27.1 );
+        //hizo trasbordo
+    }
+    public function test_tras_nocturno(){
+     $tarjeta = new Tarjeta( 1234, "Normal" );
+        $tarjeta->cargar( 40 );
+        $colectivo = new Colectivo ( "120", "Semtur" );
+        $colectivo2 = new Colectivo ( "121", "Semtur" );
+        $tarjeta->viaje( $colectivo );
+        //hizo un viaje normal, ahora el saldo tiene que ser 30.3
+        $this->assertEquals( $tarjeta->get_saldo(), 30.3 );
+        $fecha = new DateTime('2017-11-04 03:00:00');
+        $tarjeta->fechaanterior = $fecha->sub( new \DateInterval( 'PT0H1800S' ) );
+        $tarjeta->viaje( $colectivo2 );
+        $this->assertEquals( $tarjeta->get_saldo(), 27.1 );
+        //hizo trasbordo   
+    }
 }
